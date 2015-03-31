@@ -19,14 +19,28 @@ feature 'user creates new tutorial', %Q{
       fill_in :tutorial_title, with: "A Sweet Rails Tutorial"
       fill_in :tutorial_url, with: "https://www.codeschool.com/courses/rails-for-zombies-redux"
       fill_in :tutorial_language, with: "Ruby"
-      
-      # fill_in :tutorial_description, with: "Y'all should really check this out."
-      # fill_in :tutorial_url, with: "https://www.codeschool.com/courses/rails-for-zombies-redux"
-      # fill_in :tutorial_organization, with: "Code School"
-      # select '$', from: 'Tutorial Cost'
+
+      fill_in :tutorial_description, with: "Y'all should really check this out."
+      fill_in :tutorial_organization, with: "Code School"
+      select 'Free', from: :tutorial_cost
 
       click_button 'Add Tutorial'
+
       expect(page).to have_content('A Sweet Rails Tutorial')
+    end
+
+    scenario 'user tries to create a new tutorial with missing information' do
+      visit new_tutorial_path
+      fill_in :tutorial_title, with: "A Sweet Rails Tutorial"
+      fill_in :tutorial_language, with: "Ruby"
+
+      fill_in :tutorial_description, with: "Y'all should really check this out."
+      fill_in :tutorial_organization, with: "Code School"
+      select 'Free', from: :tutorial_cost
+
+      click_button 'Add Tutorial'
+
+      expect(page).to have_content('Add a Tutorial')
     end
 
 end
