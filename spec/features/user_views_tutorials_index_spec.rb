@@ -6,9 +6,7 @@ feature 'As a user, I want to view all the tutorials' do
     FactoryGirl.create(:tutorial)
     FactoryGirl.create(:tutorial)
     visit tutorials_path
-    save_and_open_page
-
-    expect(page).to have_content('Tutorial1')
     expect(page).to have_content('Tutorial2')
+    expect(page).to have_content('Tutorial3')
   end
 end

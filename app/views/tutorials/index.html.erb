@@ -1,3 +1,5 @@
 <% @tutorials.each do |tutorial| %>
-	<p><%= tutorial.title %></p><br>
+	<%= link_to tutorial do %>
+		<div><h2><%= tutorial.title %></h2></div>
+	<% end %>
 <% end %>
