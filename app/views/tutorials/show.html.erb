@@ -28,19 +28,13 @@
 <% end %>
 
 <%= form_for([@tutorial, @tutorial.reviews.build]) do |f| %>
-  <p>
-    <%= f.label :rating %><br>
+    <%= f.label :rating %>
     <%= f.select :rating, %w(1 2 3 4 5), prompt: 'Select' %>
-  </p>
 
-  <p>
-    <%= f.label :body %><br>
+    <%= f.label :body %>
     <%= f.text_area :body %>
-  </p>
 
-  <p>
     <%= f.submit %>
-  </p>
 <% end %>
 
 <% @tutorial.reviews.each do |review| %>
