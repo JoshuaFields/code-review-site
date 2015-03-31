@@ -12,3 +12,41 @@
 	<strong>Language:</strong>
 	<%= @tutorial.language %>
 </p>
+
+<%= form_for([@tutorial, @tutorial.reviews.build]) do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@review.errors.count, "error") %> prohibited
+        this review from being saved:
+      </h2>
+      <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :rating %><br>
+    <%= f.select :rating, %w(1 2 3 4 5), prompt: 'Select' %>
+  </p>
+
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<% @tutorial.reviews.each do |review| %>
+	<p>
+		<strong>Review:</strong>
+		<%= review.rating %>
+		<%= review.body %>
+	</p>
+<% end %>

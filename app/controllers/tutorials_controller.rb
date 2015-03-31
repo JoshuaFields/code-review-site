@@ -3,7 +3,8 @@ class TutorialsController < ApplicationController
     @tutorials = Tutorial.all
   end
 
-  def show 
+  def show
     @tutorial = Tutorial.find(params[:id])
+    @review = Review.new
   end
 end
