@@ -1,0 +1,11 @@
+<%= link_to "Back", tutorials_path, class: "button radius" %>
+<h1>Add a Tutorial</h1>
+<%= form_for @tutorial do |t| %>
+  <%= t.label :title %>
+  <%= t.text_field :title %>
+  <%= t.label :url %>
+  <%= t.text_field :url %>
+  <%= t.label :language %>
+  <%= t.text_field :language %>
+  <%= t.submit "Add Tutorial", class: "button radius" %>
+<% end %>
