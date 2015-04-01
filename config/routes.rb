@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :tutorials, only: %i(index show new create)
+  authenticate :user do
+    resources :tutorials, only: %i(new create)
+  end
 
   resources :tutorials, only: %i(index show) do
-    resources :reviews, only: %i(index create)
+    resources :reviews, only: %i(index)
+    authenticate :user do
+      resources :reviews, only: %i(create)
+    end
   end
 
   root 'tutorials#index'

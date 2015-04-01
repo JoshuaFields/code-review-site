@@ -4,7 +4,7 @@ feature %q(
   As a user
   I want to view a specific tutorial
   So that I can learn more about it
-  ) do
+) do
   scenario 'user views specific tutorial' do
     tutorial = FactoryGirl.create(:tutorial)
     visit tutorial_path(tutorial)
