@@ -26,6 +26,7 @@ class TutorialsController < ApplicationController
   protected
 
   def tutorial_params
-    params.require(:tutorial).permit(:title, :url, :language, :description, :organization, :cost)
+    params.require(:tutorial).permit(:title, :url, :language,
+      :description, :organization, :cost)
   end
 end
