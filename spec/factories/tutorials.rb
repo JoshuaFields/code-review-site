@@ -6,5 +6,6 @@ FactoryGirl.define do
     description "A tutorial"
     organization "Code School?"
     cost "$"
+    user
   end
 end

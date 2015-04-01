@@ -1,7 +1,10 @@
-require 'pry'
 require 'rails_helper'
 
-feature 'As a user, I want to view all the tutorials' do
+feature %q(
+  As a user
+  I want to view all the tutorials
+  so that I can easily navigate the site
+) do
   scenario 'User views index page for tutorials' do
     first_tutorial = FactoryGirl.create(:tutorial)
     second_tutorial = FactoryGirl.create(:tutorial)
