@@ -1,10 +1,11 @@
 require 'rails_helper'
-context "user is signed in" do
-  feature %{
-    As an authenticated user
+
+feature %{
+    As a user
     I want to access the new page for tutorials
     So that I can add a tutorial
-  } do
+} do
+  context "user is signed in" do
     before(:each) do
       user = FactoryGirl.create(:user)
 
@@ -22,14 +23,8 @@ context "user is signed in" do
       expect(page).to have_content('Add a Tutorial')
     end
   end
-end
 
-context "user is not signed in" do
-  feature %{
-    As an unauthenticated user
-    I want to access the new page for tutorials
-    So that I can add a tutorial, but I can't
-  } do
+  context "user is not signed in" do
     scenario 'click on link button to new tutorial page' do
       visit tutorials_path
       click_link 'Add Tutorial'
