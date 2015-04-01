@@ -1,14 +1,46 @@
 <p>
-	<strong>Title:</strong>
-	<%= @tutorial.title %>
+  <strong>Title:</strong>
+  <%= @tutorial.title %>
 </p>
 
 <p>
-	<strong>URL:</strong>
-	<%= @tutorial.url %>
+  <strong>URL:</strong>
+  <%= @tutorial.url %>
 </p>
 
 <p>
-	<strong>Language:</strong>
-	<%= @tutorial.language %>
+  <strong>Language:</strong>
+  <%= @tutorial.language %>
 </p>
+
+<% if @review.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@review.errors.count, "error") %> prohibited
+      this review from being saved:
+    </h2>
+    <ul>
+      <% @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for([@tutorial, @tutorial.reviews.build]) do |f| %>
+    <%= f.label :rating %>
+    <%= f.select :rating, %w(1 2 3 4 5), prompt: 'Select' %>
+
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+
+    <%= f.submit %>
+<% end %>
+
+<% @tutorial.reviews.each do |review| %>
+  <p>
+    <strong>Review:</strong>
+    <%= review.rating %>
+    <%= review.body %>
+  </p>
+<% end %>

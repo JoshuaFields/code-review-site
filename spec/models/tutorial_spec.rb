@@ -12,4 +12,6 @@ RSpec.describe Tutorial, type: :model do
   it { should_not have_valid(:url).when("") }
   it { should_not have_valid(:language).when("") }
   it { should_not have_valid(:organization).when("") }
+
+  it { should have_many(:reviews).dependent(:destroy) }
 end
