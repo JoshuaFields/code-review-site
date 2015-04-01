@@ -1,12 +1,11 @@
 require 'rails_helper'
 
-context "user is signed in" do
-  feature %q(
-    As an authenticated user
-    I want to submit a new review for a tutorial
-    so that others can know my important opinion.
-  ) do
-
+feature %q(
+  As an authenticated user
+  I want to submit a new review for a tutorial
+  so that others can know my important opinion.
+) do
+  context "user is signed in" do
     before(:each) do
       user = FactoryGirl.create(:user)
 
@@ -30,15 +29,8 @@ context "user is signed in" do
       expect(page).to have_content('4')
     end
   end
-end
 
-context "user is not signed in" do
-  feature %q(
-    As an unauthenticated user
-    I want to submit a new review for a tutorial
-    so that others can know my important opinion, but I can't.
-  ) do
-
+  context "user is not signed in" do
     scenario 'Submits a new review' do
       test_tutorial = FactoryGirl.create(:tutorial)
       visit tutorial_path(test_tutorial.id)

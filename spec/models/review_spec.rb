@@ -12,7 +12,7 @@ RSpec.describe Review, type: :model do
   it { should_not have_valid(:body).when("a" * 10000) }
   it { should_not have_valid(:rating).when(50) }
 
-  it { should validate_presence_of :body }
+  it { should validate_presence_of :rating }
   it { should validate_presence_of :user }
 
   it { should validate_length_of :body }

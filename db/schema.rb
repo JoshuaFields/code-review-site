@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401170914) do
+ActiveRecord::Schema.define(version: 20150401192632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "rating"
+    t.integer  "rating",      null: false
     t.text     "body"
     t.integer  "tutorial_id"
     t.datetime "created_at",  null: false

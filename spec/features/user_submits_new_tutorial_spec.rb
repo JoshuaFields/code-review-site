@@ -1,11 +1,11 @@
 require "rails_helper"
 
-context "user is signed in" do
-  feature %{
-    As an authenticated user
-    I want to add a tutorial
-    So that other users can learn about and review a cool resource
-  } do
+feature %{
+  As a user
+  I want to add a tutorial
+  So that other users can learn about and review a cool resource
+} do
+  context "user is signed in" do
     before(:each) do
       user = FactoryGirl.create(:user)
 
@@ -54,14 +54,8 @@ context "user is signed in" do
       expect(page).to have_content("Url can't be blank")
     end
   end
-end
 
-context "user isn't signed in" do
-  feature %{
-    As an unauthenticated user
-    I want to add a tutorial
-    So that other users can learn about and review a cool resource, but I can't
-  } do
+  context "user isn't signed in" do
     scenario "user creates a new tutorial with valid information" do
       visit new_tutorial_path
 
