@@ -11,20 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401172516) do
+ActiveRecord::Schema.define(version: 20150401192632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "rating"
+    t.integer  "rating",      null: false
     t.text     "body"
     t.integer  "tutorial_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
   end
 
   add_index "reviews", ["tutorial_id"], name: "index_reviews_on_tutorial_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "tutorials", force: :cascade do |t|
     t.string   "title",        null: false
@@ -33,9 +35,12 @@ ActiveRecord::Schema.define(version: 20150401172516) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.text     "description"
-    t.string   "organization", null: false
+    t.string   "organization"
     t.string   "cost"
+    t.integer  "user_id"
   end
+
+  add_index "tutorials", ["user_id"], name: "index_tutorials_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -71,4 +76,6 @@ ActiveRecord::Schema.define(version: 20150401172516) do
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
   add_foreign_key "reviews", "tutorials"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "tutorials", "users"
 end
