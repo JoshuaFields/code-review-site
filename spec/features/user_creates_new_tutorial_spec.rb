@@ -40,7 +40,7 @@ feature 'user creates new tutorial', %Q{
 
       click_button 'Add Tutorial'
 
-      expect(page).to have_content('Add a Tutorial')
+      expect(page).to have_content("Url can't be blank")
     end
 
 end
