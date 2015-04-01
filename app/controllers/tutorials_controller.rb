@@ -14,6 +14,7 @@ class TutorialsController < ApplicationController
 
   def create
     @tutorial = Tutorial.new(tutorial_params)
+    @tutorial.user = current_user
     if @tutorial.save
       flash[:notice] = "Tutorial Added."
       redirect_to tutorials_path
@@ -26,6 +27,8 @@ class TutorialsController < ApplicationController
   protected
 
   def tutorial_params
-    params.require(:tutorial).permit(:title, :url, :language, :description, :organization, :cost)
+    params.require(:tutorial).permit(
+      :title, :url, :language, :description, :organization, :cost
+    )
   end
 end

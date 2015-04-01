@@ -6,6 +6,17 @@ feature 'user creates new tutorial', %Q{
   I want to add a tutorial
   So that other users can learn about and review a cool resource
 } do
+  before(:each) do
+    user = FactoryGirl.create(:user)
+
+    visit new_user_session_path
+
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+
+    click_button 'Log in'
+  end
+
     scenario 'user wants to go back to tutorial index page' do
       first_tutorial = FactoryGirl.create(:tutorial)
       visit new_tutorial_path
@@ -42,5 +53,4 @@ feature 'user creates new tutorial', %Q{
 
       expect(page).to have_content("Url can't be blank")
     end
-
 end

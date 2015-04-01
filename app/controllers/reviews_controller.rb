@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   def create
     @tutorial = Tutorial.find(params[:tutorial_id])
     @review = @tutorial.reviews.new(review_params)
+    @review.user = current_user
     if @review.save
       redirect_to tutorial_path(@tutorial)
     else
