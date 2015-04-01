@@ -4,8 +4,10 @@ class ReviewsController < ApplicationController
     @review = @tutorial.reviews.new(review_params)
     @review.user = current_user
     if @review.save
+      flash[:notice] = "Review Added."
       redirect_to tutorial_path(@tutorial)
     else
+      flash[:notice] = @review.errors.full_messages[0]
       render 'tutorials/show'
     end
   end

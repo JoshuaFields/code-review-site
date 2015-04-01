@@ -1,0 +1,12 @@
+.new-line {
+    display:inline;
+}
+.new-line:after {
+    content:"\a";
+    white-space: pre;
+}
+
+.flash {
+   padding: 1em;
+   background-color: #3B9089;
+}
