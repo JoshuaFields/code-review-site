@@ -1,5 +1,7 @@
 class Review < ActiveRecord::Base
   belongs_to :tutorial
+  belongs_to :user
+
   validates :user, presence: true
   validates :body, presence: true, length: { in: 7..8191 }
   validates :rating, presence: true, numericality: {
