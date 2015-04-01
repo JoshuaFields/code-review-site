@@ -4,4 +4,5 @@ class Tutorial < ActiveRecord::Base
   validates :language, presence: true
   validates :organization, presence: true
 
+  has_many :reviews
 end
