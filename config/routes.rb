@@ -6,16 +6,14 @@ Rails.application.routes.draw do
   end
 
   resources :tutorials, only: %i(index show) do
-    resources :reviews, only: %i(index)
+    resources :reviews, only: %i(index) do
+      member do
+        put "like", to: "reviews#upvote"
+        put "dislike", to: "reviews#downvote"
+      end
+    end
     authenticate :user do
       resources :reviews, only: %i(create)
-    end
-  end
-
-  resources :reviews do
-    member do
-      put "like", to: "reviews#upvote"
-      put "dislike", to: "reviews#downvote"
     end
   end
 
