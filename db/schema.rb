@@ -29,11 +29,14 @@ ActiveRecord::Schema.define(version: 20150401144831) do
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "tutorials", force: :cascade do |t|
-    t.string   "title"
-    t.string   "url"
-    t.string   "language"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",        null: false
+    t.string   "url",          null: false
+    t.string   "language",     null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.text     "description"
+    t.string   "organization", null: false
+    t.string   "cost"
   end
 
   create_table "users", force: :cascade do |t|
