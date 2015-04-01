@@ -56,7 +56,6 @@ context "user is signed in" do
   end
 end
 
-
 context "user isn't signed in" do
   feature %{
     As an unauthenticated user
