@@ -11,6 +11,22 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def downvote
+    # @tutorial = Tutorial.find(params[:tutorial_id])
+    @review = Review.find(params[:id])
+    @review.downvote_by current_user
+    @tutorial = @review.tutorial
+    redirect_to tutorial_path(@tutorial)
+  end
+
+  def upvote
+    # @tutorial = Tutorial.find(params[:tutorial_id])
+    @review = Review.find(params[:id])
+    @review.upvote_by current_user
+    @tutorial = @review.tutorial
+    redirect_to tutorial_path(@tutorial)
+  end
+
   private
 
   def review_params
