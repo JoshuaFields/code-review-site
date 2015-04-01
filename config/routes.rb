@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :tutorials, only: %i(index show) do
-    resources :reviews, only: %i(index create)
+  resources :tutorials, only: [:index, :show] do
+    resources :reviews, only: [:index]
+    authenticate :user do
+      resources :reviews, only: [:create]
+    end
   end
   root 'tutorials#index'
   # The priority is based upon order of creation: first created -> highest priority.
