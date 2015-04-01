@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401144831) do
+ActiveRecord::Schema.define(version: 20150401155243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,10 @@ ActiveRecord::Schema.define(version: 20150401144831) do
     t.text     "description"
     t.string   "organization", null: false
     t.string   "cost"
+    t.integer  "user_id"
   end
+
+  add_index "tutorials", ["user_id"], name: "index_tutorials_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -59,4 +62,5 @@ ActiveRecord::Schema.define(version: 20150401144831) do
 
   add_foreign_key "reviews", "tutorials"
   add_foreign_key "reviews", "users"
+  add_foreign_key "tutorials", "users"
 end
