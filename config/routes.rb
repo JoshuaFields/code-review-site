@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  resources :tutorials, only: %i(index show new create)
   resources :tutorials, only: %i(index show) do
     resources :reviews, only: %i(index create)
   end
+
   root 'tutorials#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
