@@ -27,7 +27,7 @@ class TutorialsController < ApplicationController
       flash[:notice] = "Tutorial Added."
       redirect_to tutorials_path
     else
-      flash[:notice] = @tutorial.errors.full_messages[0]
+      flash[:notice] = @tutorial.errors.full_messages.join("! ")
       render :new
     end
   end
@@ -37,7 +37,7 @@ class TutorialsController < ApplicationController
     if @tutorial.user == current_user && @tutorial.update(tutorial_params)
       redirect_to @tutorial
     else
-      flash[:notice] = @tutorial.errors.full_messages[0]
+      flash[:notice] = @tutorial.errors.full_messages.join("! ")
       render :edit
     end
   end
