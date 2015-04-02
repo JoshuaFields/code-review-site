@@ -30,21 +30,21 @@ feature %(
     end
 
     scenario "user wants to go back to tutorial index page" do
-      first_tutorial = FactoryGirl.create(:tutorial, user: @test_user)
-      second_tutorial = FactoryGirl.create(:tutorial, user: @test_user)
-      visit edit_tutorial_path(first_tutorial)
+      first_tut = FactoryGirl.create(:tutorial, user: @test_user)
+      second_tut = FactoryGirl.create(:tutorial, user: @test_user)
+      visit edit_tutorial_path(first_tut)
       click_link "Home"
-      expect(page).to have_content(first_tutorial.title)
-      expect(page).to have_content(second_tutorial.title)
+      expect(page).to have_content(first_tut.title)
+      expect(page).to have_content(second_tut.title)
     end
 
     scenario "user wants to go back to tutorial show page" do
-      first_tutorial = FactoryGirl.create(:tutorial, user: @test_user)
-      second_tutorial = FactoryGirl.create(:tutorial, user: @test_user)
-      visit edit_tutorial_path(first_tutorial)
+      first_tut = FactoryGirl.create(:tutorial, user: @test_user)
+      second_tut = FactoryGirl.create(:tutorial, user: @test_user)
+      visit edit_tutorial_path(first_tut)
       click_link "Back"
-      expect(page).to have_content(first_tutorial.title)
-      expect(page).to have_no_content(second_tutorial.title)
+      expect(page).to have_content(first_tut.title)
+      expect(page).to have_no_content(second_tut.title)
     end
 
     scenario "user edits tutorial with valid information" do
