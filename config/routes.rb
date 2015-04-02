@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get 'tutorials/search', to: 'tutorials#search'
 
-  resources :tutorials, only: %i(index show search) do
+  resources :tutorials, only: %i(index show) do
     resources :reviews, only: %i(index)
     authenticate :user do
       resources :reviews, only: %i(create)
