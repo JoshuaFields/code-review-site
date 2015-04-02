@@ -1,0 +1,27 @@
+<%= form_for @tutorial do |t| %>
+  <%= t.label :title %>
+  <%= t.text_field :title %>
+
+  <%= t.label :language %>
+  <%= t.text_field :language %>
+
+  <%= t.label :url %>
+  <%= t.text_field :url %>
+
+  <%= t.label :organization %>
+  <%= t.text_field :organization %>
+
+  <%= t.label :description %>
+  <%= t.text_area :description %>
+
+  <%= t.label :cost %>
+  <%= t.select :cost, options_for_select([
+    ['Free', 'Free'],
+    ['$: Less than $10/month', '$'],
+    ['$$: Less than $20/month', '$$'],
+    ['$$$: Less than $30/month', '$$$'],
+    ['$$$$: More than $30/month', '$$$$']
+    ]), prompt: 'Select' %>
+
+  <%= t.submit "Submit", class: "button radius" %>
+<% end %>
