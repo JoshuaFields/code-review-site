@@ -1,6 +1,6 @@
 class TutorialsController < ApplicationController
   def index
-    @tutorials = Tutorial.all.page(params[:page]).per(10)
+    @tutorials = Tutorial.all.page(params[:page]).per(3)
   end
 
   def show
