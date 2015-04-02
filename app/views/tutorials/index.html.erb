@@ -1,11 +1,20 @@
-<div class="row">
-	<div class="small-12 columns">
-		<% @tutorials.each do |tutorial| %>
-			<%= link_to tutorial do %>
-				<h2><%= tutorial.title %></h2>
-			<% end %>
-		<% end %>
-
+<div class="row longer-row">
+	<div class="large-2 columns tutorial-index-wrapper">
+		<h2>Sorting shit goes here</h2>
 		<%= link_to "Add Tutorial", new_tutorial_path, class: "button radius" %>
 	</div>
+	<div class="large-9 columns tutorial-index-wrapper">
+		<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+			<% @tutorials.each do |tutorial| %>
+				<li class="tutorial-thumbnail-wrapper">
+					<%= link_to tutorial do %>
+						<div class="tutorial-thumbnail">
+							<%= tutorial.title %>
+						</div>
+					<% end %>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+	<%#= link_to "Add Tutorial", new_tutorial_path, class: "button radius" %>
 </div>
