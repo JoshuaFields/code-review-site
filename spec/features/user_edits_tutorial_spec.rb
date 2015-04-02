@@ -23,9 +23,11 @@ feature %(
       expect(page).to have_field(:tutorial_url, with: test_tutorial.url)
       expect(page).to have_field(:tutorial_organization,
         with: test_tutorial.organization)
-      # expect(page).to have_select(:tutorial_cost, selected: test_tutorial.cost)
-      expect(page).to have_field(:tutorial_language, with: test_tutorial.language)
-      expect(page).to have_field(:tutorial_description, with: test_tutorial.description)
+      #expect(page).to have_select(:tutorial_cost, selected: test_tutorial.cost)
+      expect(page).to have_field(:tutorial_language,
+        with: test_tutorial.language)
+      expect(page).to have_field(:tutorial_description,
+        with: test_tutorial.description)
     end
 
     scenario "user wants to go back to tutorial index page" do
