@@ -17,12 +17,15 @@
     </p>
   </div>
 </div>
-
 <div class="row">
   <div class="small-12 column show-tutorial-wrapper">
     <% @tutorial.reviews.each do |review| %>
-      <% if review.id != nil %>
+      <% if review.id %>
         <p>
+          <%= link_to "upvote", like_tutorial_review_path(@tutorial, review), method: :put %>
+          <%= review.score %>
+          <%= link_to "downvote", dislike_tutorial_review_path(@tutorial, review), method: :put %>
+
           <div class="new-line"><strong>Review:</strong>
           <%= review.body %></div>
           <div class="new-line"><strong>Rating:</strong>
