@@ -1,10 +1,10 @@
 require "rails_helper"
 
-feature %{
+feature %(
   As a user
   I want to add a tutorial
   So that other users can learn about and review a cool resource
-} do
+) do
   context "user is signed in" do
     before(:each) do
       user = FactoryGirl.create(:user)

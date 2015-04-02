@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-feature %q(
+feature %(
   As a user
   I want to view all the reviews belonging to a tutorial
-  so that I can learn if it's good or not. 
+  so that I can learn if it's good or not.
 ) do
   scenario 'Views tutorial show page, sees all reviews for that tutorial' do
     testreview = FactoryGirl.create(:review)

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature %q(
+feature %(
   As a user
   I want to view a specific tutorial
   So that I can learn more about it
