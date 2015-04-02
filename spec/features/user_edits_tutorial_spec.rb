@@ -6,32 +6,30 @@ feature %(
   So that other users can learn about and review a cool resource
 ) do
   context "user is signed in" do
-    before(:each) do
-      @test_user = FactoryGirl.create(:user)
+    let(:test_user) { FactoryGirl.create(:user) }
 
+    before(:each) do
       visit new_user_session_path
-      fill_in "Email", with: @test_user.email
-      fill_in "Password", with: @test_user.password
+      fill_in "Email", with: test_user.email
+      fill_in "Password", with: test_user.password
 
       click_button "Log in"
     end
 
     scenario "fields are pre-populated with existing information" do
-      test_tut = FactoryGirl.create(:tutorial, user: @test_user)
+      test_tut = FactoryGirl.create(:tutorial, user: test_user)
       visit edit_tutorial_path(test_tut)
-      expect(page).to have_field(:tutorial_title, with: test_tut.title)
-      expect(page).to have_field(:tutorial_url, with: test_tut.url)
-      expect(page).to have_field(:tutorial_organization,
-        with: test_tut.organization)
-      # expect(page).to have_select(:tutorial_cost, selected: test_tut.cost)
-      expect(page).to have_field(:tutorial_language, with: test_tut.language)
-      expect(page).to have_field(:tutorial_description,
-        with: test_tut.description)
+      expect(page).to have_field("Title", with: test_tut.title)
+      expect(page).to have_field("Url", with: test_tut.url)
+      expect(page).to have_field("Organization", with: test_tut.organization)
+      # expect(page).to have_select("Cost", selected: test_tut.cost)
+      expect(page).to have_field("Language", with: test_tut.language)
+      expect(page).to have_field("Description", with: test_tut.description)
     end
 
     scenario "user wants to go back to tutorial index page" do
-      first_tut = FactoryGirl.create(:tutorial, user: @test_user)
-      second_tut = FactoryGirl.create(:tutorial, user: @test_user)
+      first_tut = FactoryGirl.create(:tutorial, user: test_user)
+      second_tut = FactoryGirl.create(:tutorial, user: test_user)
       visit edit_tutorial_path(first_tut)
       click_link "Home"
       expect(page).to have_content(first_tut.title)
@@ -39,8 +37,8 @@ feature %(
     end
 
     scenario "user wants to go back to tutorial show page" do
-      first_tut = FactoryGirl.create(:tutorial, user: @test_user)
-      second_tut = FactoryGirl.create(:tutorial, user: @test_user)
+      first_tut = FactoryGirl.create(:tutorial, user: test_user)
+      second_tut = FactoryGirl.create(:tutorial, user: test_user)
       visit edit_tutorial_path(first_tut)
       click_link "Back"
       expect(page).to have_content(first_tut.title)
@@ -48,15 +46,15 @@ feature %(
     end
 
     scenario "user edits tutorial with valid information" do
-      test_tut = FactoryGirl.create(:tutorial, user: @test_user)
+      test_tut = FactoryGirl.create(:tutorial, user: test_user)
       visit edit_tutorial_path(test_tut)
-      fill_in :tutorial_title, with: "A Sweet Rails Tutorial"
-      fill_in :tutorial_url,
+      fill_in "Title", with: "A Sweet Rails Tutorial"
+      fill_in "Url",
         with: "https://www.codeschool.com/courses/rails-for-zombies-redux"
-      fill_in :tutorial_language, with: "Ruby"
-      fill_in :tutorial_description, with: "Y'all should really check this out."
-      fill_in :tutorial_organization, with: "Code School"
-      select "Free", from: :tutorial_cost
+      fill_in "Language", with: "Ruby"
+      fill_in "Description", with: "Y'all should really check this out."
+      fill_in "Organization", with: "Code School"
+      select "Free", from: "Cost"
 
       click_button "Submit"
 
@@ -64,14 +62,14 @@ feature %(
     end
 
     scenario 'user tries to edit tutorial with missing information' do
-      test_tut = FactoryGirl.create(:tutorial, user: @test_user)
+      test_tut = FactoryGirl.create(:tutorial, user: test_user)
       visit edit_tutorial_path(test_tut)
-      fill_in :tutorial_title, with: "A Sweet Rails Tutorial"
-      fill_in :tutorial_language, with: "Ruby"
-      fill_in :tutorial_url, with: nil
-      fill_in :tutorial_description, with: "Y'all should really check this out."
-      fill_in :tutorial_organization, with: "Code School"
-      select "Free", from: :tutorial_cost
+      fill_in "Title", with: "A Sweet Rails Tutorial"
+      fill_in "Language", with: "Ruby"
+      fill_in "Url", with: nil
+      fill_in "Description", with: "Y'all should really check this out."
+      fill_in "Organization", with: "Code School"
+      select "Free", from: "Cost"
 
       click_button "Submit"
 
