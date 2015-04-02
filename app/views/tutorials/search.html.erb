@@ -1,0 +1,11 @@
+<% if @results.ntuples == 0 %>
+  <h2>No results found.</h1>
+<% else %>
+  <% @results.each do |result| %>
+    <%= link_to tutorial_path(result["id"]) do %>
+      <h2><%= result["title"] %></h2>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= link_to "Add Tutorial", new_tutorial_path, class: "button radius" %>

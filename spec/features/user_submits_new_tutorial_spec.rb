@@ -1,10 +1,10 @@
 require "rails_helper"
 
-feature %{
+feature %(
   As a user
   I want to add a tutorial
   So that other users can learn about and review a cool resource
-} do
+) do
   context "user is signed in" do
     before(:each) do
       user = FactoryGirl.create(:user)
@@ -35,7 +35,7 @@ feature %{
       fill_in :tutorial_organization, with: "Code School"
       select "Free", from: :tutorial_cost
 
-      click_button "Add Tutorial"
+      click_button "Submit"
 
       expect(page).to have_content("A Sweet Rails Tutorial")
     end
@@ -49,7 +49,7 @@ feature %{
       fill_in :tutorial_organization, with: "Code School"
       select "Free", from: :tutorial_cost
 
-      click_button "Add Tutorial"
+      click_button "Submit"
 
       expect(page).to have_content("Url can't be blank")
     end

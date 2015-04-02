@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature %q(
+feature %(
   As an authenticated user
   I want to submit a new review for a tutorial
   so that others can know my important opinion.
