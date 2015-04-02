@@ -26,14 +26,14 @@ feature %(
 
     scenario "user creates a new tutorial with valid information" do
       visit new_tutorial_path
-      fill_in :tutorial_title, with: "A Sweet Rails Tutorial"
-      fill_in :tutorial_url,
+      fill_in "Title", with: "A Sweet Rails Tutorial"
+      fill_in "Url",
         with: "https://www.codeschool.com/courses/rails-for-zombies-redux"
-      fill_in :tutorial_language, with: "Ruby"
+      fill_in "Language", with: "Ruby"
 
-      fill_in :tutorial_description, with: "Y'all should really check this out."
-      fill_in :tutorial_organization, with: "Code School"
-      select "Free", from: :tutorial_cost
+      fill_in "Description", with: "Y'all should really check this out."
+      fill_in "Organization", with: "Code School"
+      select "Free", from: "Cost"
 
       click_button "Submit"
 
@@ -42,12 +42,12 @@ feature %(
 
     scenario 'user tries to create a new tutorial with missing information' do
       visit new_tutorial_path
-      fill_in :tutorial_title, with: "A Sweet Rails Tutorial"
-      fill_in :tutorial_language, with: "Ruby"
+      fill_in "Title", with: "A Sweet Rails Tutorial"
+      fill_in "Language", with: "Ruby"
 
-      fill_in :tutorial_description, with: "Y'all should really check this out."
-      fill_in :tutorial_organization, with: "Code School"
-      select "Free", from: :tutorial_cost
+      fill_in "Description", with: "Y'all should really check this out."
+      fill_in "Organization", with: "Code School"
+      select "Free", from: "Cost"
 
       click_button "Submit"
 
