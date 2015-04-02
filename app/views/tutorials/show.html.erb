@@ -13,7 +13,7 @@
   <%= @tutorial.language %>
 </p>
 
-<%= form_for([@tutorial, @tutorial.reviews.build]) do |f| %>
+<%= form_for([@tutorial, @review]) do |f| %>
     <%= f.label :rating %>
     <%= f.select :rating, %w(1 2 3 4 5), prompt: 'Select' %>
 
@@ -23,10 +23,13 @@
     <%= f.submit "Add Review", class: "button" %>
 <% end %>
 
-
 <% @tutorial.reviews.each do |review| %>
-  <% if review.id != nil %>
+  <% if review.id %>
     <p>
+      <%= link_to "upvote", like_tutorial_review_path(@tutorial, review), method: :put %>
+      <%= review.score %>
+      <%= link_to "downvote", dislike_tutorial_review_path(@tutorial, review), method: :put %>
+
       <div class="new-line"><strong>Review:</strong>
       <%= review.body %></div>
       <div class="new-line"><strong>Rating:</strong>
