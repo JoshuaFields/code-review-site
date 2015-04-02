@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = "Review Added."
       redirect_to tutorial_path(@tutorial)
     else
-      flash[:notice] = @review.errors.full_messages[0]
+      flash[:notice] = @review.errors.full_messages.join("! ")
       render 'tutorials/show'
     end
   end
