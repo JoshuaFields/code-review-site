@@ -8,19 +8,18 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'devise'
+gem 'foundation-rails'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'coveralls', require: false
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'factory_girl_rails'
+  gem 'valid_attribute'
+  gem 'pry-rails'
+  gem 'shoulda-matchers', require: false
 end
-
-gem 'rspec-rails', group: [:development, :test]
-gem 'capybara', group: [:development, :test]
-gem 'launchy', group: [:development, :test]
-gem 'factory_girl_rails', group: [:development, :test]
-gem 'valid_attribute', group: [:development, :test]
-gem 'pry-rails', group: [:development, :test]
-gem 'shoulda-matchers', group: [:development, :test], require: false
-gem 'devise'
-gem 'foundation-rails'

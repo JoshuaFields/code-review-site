@@ -12,6 +12,14 @@ class TutorialsController < ApplicationController
     @tutorial = Tutorial.new
   end
 
+  def edit
+    @tutorial = Tutorial.find(params[:id])
+    unless current_user == @tutorial.user
+      flash[:notice] = "You can only edit your own tutorials!"
+      redirect_to tutorials_path
+    end
+  end
+
   def create
     @tutorial = Tutorial.new(tutorial_params)
     @tutorial.user = current_user
@@ -24,7 +32,22 @@ class TutorialsController < ApplicationController
     end
   end
 
-  protected
+  def update
+    @tutorial = Tutorial.find(params[:id])
+    if @tutorial.user == current_user && @tutorial.update(tutorial_params)
+      redirect_to @tutorial
+    else
+      render 'edit'
+    end
+  end
+
+  def search
+    search_term = PGconn.quote_ident(params[:search])
+    @results = ActiveRecord::Base.connection.execute("SELECT id, title FROM " \
+      "tutorials WHERE to_tsvector(title) @@ plainto_tsquery('#{search_term}')")
+  end
+
+  private
 
   def tutorial_params
     params.require(:tutorial).permit(
