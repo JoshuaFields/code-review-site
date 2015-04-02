@@ -37,7 +37,8 @@ class TutorialsController < ApplicationController
     if @tutorial.user == current_user && @tutorial.update(tutorial_params)
       redirect_to @tutorial
     else
-      render 'edit'
+      flash[:notice] = @tutorial.errors.full_messages[0]
+      render :edit
     end
   end
 

@@ -35,7 +35,7 @@ feature %(
       fill_in :tutorial_organization, with: "Code School"
       select "Free", from: :tutorial_cost
 
-      click_button "Add Tutorial"
+      click_button "Submit"
 
       expect(page).to have_content("A Sweet Rails Tutorial")
     end
@@ -49,7 +49,7 @@ feature %(
       fill_in :tutorial_organization, with: "Code School"
       select "Free", from: :tutorial_cost
 
-      click_button "Add Tutorial"
+      click_button "Submit"
 
       expect(page).to have_content("Url can't be blank")
     end

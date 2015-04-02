@@ -5,9 +5,11 @@ feature %(
   I want to search the tutorials
   So that I can find the one I'm looking for
 ) do
-  FactoryGirl.create(:tutorial, title: "Great title!")
-  FactoryGirl.create(:tutorial, title: "Overall TITLE awesomeness!")
-  FactoryGirl.create(:tutorial, title: "Improved titleness!")
+  before(:each) do
+    FactoryGirl.create(:tutorial, title: "Great title!")
+    FactoryGirl.create(:tutorial, title: "Overall TITLE awesomeness!")
+    FactoryGirl.create(:tutorial, title: "Improved titleness!")
+  end
 
   scenario "Search term exactly matches" do
     visit tutorials_path

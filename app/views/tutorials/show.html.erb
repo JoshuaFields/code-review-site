@@ -1,3 +1,7 @@
+<% if current_user == @tutorial.user %>
+  <%= link_to 'Edit', edit_tutorial_path(@tutorial) %>
+<% end %>
+
 <p>
   <strong>Title:</strong>
   <%= @tutorial.title %>
@@ -13,6 +17,27 @@
   <%= @tutorial.language %>
 </p>
 
+<% unless @tutorial.organization.empty? %>
+  <p>
+    <strong>Organization:</strong>
+    <%= @tutorial.organization %>
+  </p>
+<% end %>
+
+<% unless @tutorial.cost.empty? %>
+  <p>
+    <strong>Cost:</strong>
+    <%= @tutorial.cost %>
+  </p>
+<% end %>
+
+<% unless @tutorial.description.empty? %>
+  <p>
+    <strong>Description:</strong>
+    <%= @tutorial.description %>
+  </p>
+<% end %>
+
 <%= form_for([@tutorial, @tutorial.reviews.build]) do |f| %>
     <%= f.label :rating %>
     <%= f.select :rating, %w(1 2 3 4 5), prompt: 'Select' %>
@@ -22,7 +47,6 @@
 
     <%= f.submit "Add Review", class: "button" %>
 <% end %>
-
 
 <% @tutorial.reviews.each do |review| %>
   <% if review.id != nil %>
