@@ -1,30 +1,33 @@
-<%= link_to "Back", tutorials_path, class: "button radius" %>
+<%= link_to "Back", tutorials_path, class: "button radius", id:"tutorial-back-button" %>
+<div class='row'>
+  <div class='small-12 column new-tutorial-wrapper'>
+    <h1>Add a Tutorial</h1>
+    <%= form_for @tutorial do |t| %>
+      <%= t.label :title %>
+      <%= t.text_field :title %>
 
-<h1>Add a Tutorial</h1>
-<%= form_for @tutorial do |t| %>
-  <%= t.label :title %>
-  <%= t.text_field :title %>
+      <%= t.label :language %>
+      <%= t.text_field :language %>
 
-  <%= t.label :language %>
-  <%= t.text_field :language %>
+      <%= t.label :url %>
+      <%= t.text_field :url %>
 
-  <%= t.label :url %>
-  <%= t.text_field :url %>
+      <%= t.label :organization %>
+      <%= t.text_field :organization %>
 
-  <%= t.label :organization %>
-  <%= t.text_field :organization %>
+      <%= t.label :description %>
+      <%= t.text_area :description %>
 
-  <%= t.label :description %>
-  <%= t.text_area :description %>
+      <%= t.label :cost %>
+      <%= t.select :cost, options_for_select([
+        ['Free', 'Free'],
+        ['$: Less than $10/month', '$'],
+        ['$$: Less than $20/month', '$$'],
+        ['$$$: Less than $30/month', '$$$'],
+        ['$$$$: More than $30/month', '$$$$']
+        ]), prompt: 'Select' %>
 
-  <%= t.label :cost %>
-  <%= t.select :cost, options_for_select([
-    ['Free', 'Free'],
-    ['$: Less than $10/month', '$'],
-    ['$$: Less than $20/month', '$$'],
-    ['$$$: Less than $30/month', '$$$'],
-    ['$$$$: More than $30/month', '$$$$']
-    ]), prompt: 'Select' %>
-
-  <%= t.submit "Add Tutorial", class: "button radius" %>
-<% end %>
+      <%= t.submit "Add Tutorial", class: "button radius" %>
+    <% end %>
+  </div>
+</div>

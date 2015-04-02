@@ -1,0 +1,79 @@
+/* Color Definitions */
+$dark_gray: #333;
+$dark_gray_hover: #262626;
+$opaque_white: rgba(255, 255, 255, .65);
+
+/*
+@font-face {
+  font-family: 'Terminal';
+  src: url('terminal.ttf') format('truetype');
+}
+*/
+/**********************************************************
+General Styling
+**********************************************************/
+body {
+  background: url(review-background.jpg) no-repeat center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.button {
+  background-color: $dark_gray;
+}
+
+.button:hover {
+  background-color: $dark_gray_hover;
+}
+
+/**********************************************************
+Nav Bar Styling
+**********************************************************/
+.top-bar {
+  height: 5rem;
+}
+
+.top-bar-section .right li a {
+  font-size: 1.8rem;
+  margin-top: .8rem;
+}
+
+.title-area .name h1 {
+  font-family: 'Terminal', times;
+  font-size: 2.3rem;
+  margin-top: .8rem;
+}
+
+/**********************************************************
+Devise Styling
+**********************************************************/
+.devise-content-wrapper {
+  margin-top: 14rem;
+  background-color: $opaque_white;
+  border: 1px solid $dark_gray;
+}
+
+/**********************************************************
+New Tutorial Page Styling
+**********************************************************/
+.new-tutorial-wrapper {
+  margin-top: 14rem;
+  background-color: $opaque_white;
+  border: 1px solid $dark_gray;
+}
+
+#tutorial-back-button {
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+
+/**********************************************************
+Show Tutorial Page Styling
+**********************************************************/
+.show-tutorial-wrapper {
+  margin-top: 5rem;
+  background-color: $opaque_white;
+  border: 1px solid $dark_gray;
+}
