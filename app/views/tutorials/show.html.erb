@@ -1,39 +1,47 @@
-<p>
-  <strong>Title:</strong>
-  <%= @tutorial.title %>
-</p>
-
-<p>
-  <strong>URL:</strong>
-  <%= @tutorial.url %>
-</p>
-
-<p>
-  <strong>Language:</strong>
-  <%= @tutorial.language %>
-</p>
-
-<%= form_for([@tutorial, @review]) do |f| %>
-    <%= f.label :rating %>
-    <%= f.select :rating, %w(1 2 3 4 5), prompt: 'Select' %>
-
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-
-    <%= f.submit "Add Review", class: "button" %>
-<% end %>
-
-<% @tutorial.reviews.each do |review| %>
-  <% if review.id %>
+<%= link_to "Back", tutorials_path, class: "button radius", id:"tutorial-back-button" %>
+<div class="row">
+  <div class="small-12 column show-tutorial-wrapper">
     <p>
-      <%= link_to "upvote", like_tutorial_review_path(@tutorial, review), method: :put %>
-      <%= review.score %>
-      <%= link_to "downvote", dislike_tutorial_review_path(@tutorial, review), method: :put %>
-
-      <div class="new-line"><strong>Review:</strong>
-      <%= review.body %></div>
-      <div class="new-line"><strong>Rating:</strong>
-      <%= review.rating %></div>
+      <strong>Title:</strong>
+      <%= @tutorial.title %>
     </p>
-  <% end %>
-<% end %>
+
+    <p>
+      <strong>URL:</strong>
+      <%= @tutorial.url %>
+    </p>
+
+    <p>
+      <strong>Language:</strong>
+      <%= @tutorial.language %>
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 column show-tutorial-wrapper">
+    <% @tutorial.reviews.each do |review| %>
+      <% if review.id %>
+        <p>
+          <%= link_to "upvote", like_tutorial_review_path(@tutorial, review), method: :put %>
+          <%= review.score %>
+          <%= link_to "downvote", dislike_tutorial_review_path(@tutorial, review), method: :put %>
+
+          <div class="new-line"><strong>Review:</strong>
+          <%= review.body %></div>
+          <div class="new-line"><strong>Rating:</strong>
+          <%= review.rating %></div>
+        </p>
+      <% end %>
+    <% end %>
+
+    <%= form_for([@tutorial, @tutorial.reviews.build]) do |f| %>
+        <%= f.label :rating %>
+        <%= f.select :rating, %w(1 2 3 4 5), prompt: 'Select' %>
+
+        <%= f.label :body %>
+        <%= f.text_area :body %>
+
+        <%= f.submit "Add Review", class: "button" %>
+    <% end %>
+  </div>
+</div>
