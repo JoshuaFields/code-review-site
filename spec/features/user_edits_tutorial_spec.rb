@@ -17,17 +17,16 @@ feature %(
     end
 
     scenario "fields are pre-populated with existing information" do
-      test_tutorial = FactoryGirl.create(:tutorial, user: @test_user)
-      visit edit_tutorial_path(test_tutorial)
-      expect(page).to have_field(:tutorial_title, with: test_tutorial.title)
-      expect(page).to have_field(:tutorial_url, with: test_tutorial.url)
+      test_tut = FactoryGirl.create(:tutorial, user: @test_user)
+      visit edit_tutorial_path(test_tut)
+      expect(page).to have_field(:tutorial_title, with: test_tut.title)
+      expect(page).to have_field(:tutorial_url, with: test_tut.url)
       expect(page).to have_field(:tutorial_organization,
-        with: test_tutorial.organization)
-      #expect(page).to have_select(:tutorial_cost, selected: test_tutorial.cost)
-      expect(page).to have_field(:tutorial_language,
-        with: test_tutorial.language)
+        with: test_tut.organization)
+      # expect(page).to have_select(:tutorial_cost, selected: test_tut.cost)
+      expect(page).to have_field(:tutorial_language, with: test_tut.language)
       expect(page).to have_field(:tutorial_description,
-        with: test_tutorial.description)
+        with: test_tut.description)
     end
 
     scenario "user wants to go back to tutorial index page" do
@@ -49,8 +48,8 @@ feature %(
     end
 
     scenario "user edits tutorial with valid information" do
-      test_tutorial = FactoryGirl.create(:tutorial, user: @test_user)
-      visit edit_tutorial_path(test_tutorial)
+      test_tut = FactoryGirl.create(:tutorial, user: @test_user)
+      visit edit_tutorial_path(test_tut)
       fill_in :tutorial_title, with: "A Sweet Rails Tutorial"
       fill_in :tutorial_url,
         with: "https://www.codeschool.com/courses/rails-for-zombies-redux"
@@ -65,8 +64,8 @@ feature %(
     end
 
     scenario 'user tries to edit tutorial with missing information' do
-      test_tutorial = FactoryGirl.create(:tutorial, user: @test_user)
-      visit edit_tutorial_path(test_tutorial)
+      test_tut = FactoryGirl.create(:tutorial, user: @test_user)
+      visit edit_tutorial_path(test_tut)
       fill_in :tutorial_title, with: "A Sweet Rails Tutorial"
       fill_in :tutorial_language, with: "Ruby"
       fill_in :tutorial_url, with: nil
@@ -82,8 +81,8 @@ feature %(
 
   context "user isn't signed in" do
     scenario "user tries to edit tutorial" do
-      test_tutorial = FactoryGirl.create(:tutorial)
-      visit edit_tutorial_path(test_tutorial)
+      test_tut = FactoryGirl.create(:tutorial)
+      visit edit_tutorial_path(test_tut)
 
       expect(page).to have_no_content("Organization")
     end
