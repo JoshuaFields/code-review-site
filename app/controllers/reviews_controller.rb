@@ -13,7 +13,6 @@ class ReviewsController < ApplicationController
   end
 
   def downvote
-    # @tutorial = Tutorial.find(params[:tutorial_id])
     @review = Review.find(params[:id])
     @review.downvote_by current_user
     @tutorial = @review.tutorial
@@ -21,7 +20,6 @@ class ReviewsController < ApplicationController
   end
 
   def upvote
-    # @tutorial = Tutorial.find(params[:tutorial_id])
     @review = Review.find(params[:id])
     @review.upvote_by current_user
     @tutorial = @review.tutorial
