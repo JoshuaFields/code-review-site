@@ -22,7 +22,7 @@ feature %(
 
   scenario "Search term is a near-match" do
     visit tutorials_path
-    fill_in :search, with: "titles"
+    fill_in :search, with: "titling"
     click_button "Search"
     expect(page).to have_content("Great title!")
     expect(page).to have_content("Overall TITLE awesomeness!")
