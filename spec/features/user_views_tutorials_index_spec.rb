@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature %q(
+feature %(
   As a user
   I want to view all the tutorials
   so that I can easily navigate the site
