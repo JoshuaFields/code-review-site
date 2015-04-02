@@ -28,6 +28,9 @@ body {
   background-color: $dark_gray_hover;
 }
 
+.longer-row {
+  max-width: 130rem;
+}
 /**********************************************************
 Nav Bar Styling
 **********************************************************/
@@ -41,7 +44,7 @@ Nav Bar Styling
 }
 
 .title-area .name h1 {
-  font-family: 'Terminal', times;
+  font-family: "Courier New";
   font-size: 2.3rem;
   margin-top: .8rem;
 }
@@ -55,6 +58,27 @@ Devise Styling
   border: 1px solid $dark_gray;
 }
 
+/**********************************************************
+Tutorial Index Page Styling
+**********************************************************/
+.tutorial-index-wrapper {
+  margin: 5rem 0;
+  background-color: $opaque_white;
+  border: 1px solid $dark_gray;
+}
+
+.tutorial-thumbnail-wrapper {
+  background-color: rgba(253, 153, 0,.5);
+  background-color: $opaque_white;
+  border: 1px solid $dark_gray;
+  padding: 3rem;
+  margin: .5rem;
+}
+
+.tutorial-thumbnail {
+  width: 100%;
+  height: 100%;
+}
 /**********************************************************
 New Tutorial Page Styling
 **********************************************************/
