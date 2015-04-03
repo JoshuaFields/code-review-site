@@ -14,6 +14,7 @@ RSpec.describe Review, type: :model do
 
   it { should validate_presence_of :rating }
   it { should validate_presence_of :user }
+  it { should validate_presence_of :tutorial }
 
   it { should validate_length_of :body }
   it { should validate_numericality_of :rating }
