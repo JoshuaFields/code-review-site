@@ -45,22 +45,32 @@ Nav Bar Styling
 .top-bar {
   height: 5rem;
   background-color: $dark-gray;
-}
 
-.top-bar-section .right li a {
-  font-size: 1.8rem;
-  margin-top: .8rem;
-}
+  .top-bar-section {
+    li:not(.has-form) a:not(.button),
+    li:not(.has-form) a:not(.button):hover,
+    ul li,
+    ul li:hover:not(.has-form) > a {
+      background-color: $dark-gray;
+      background: $dark-gray;
+    }
 
-.title-area .name h1 {
-  font-family: "Courier New";
-  font-size: 2.3rem;
-  margin-top: .8rem;
-}
+   .right li a {
+      font-size: 1.8rem;
+      margin-top: .8rem;
+    }
+  }
 
-.header-icon {
-  height: 5rem;
-  margin-left: 3rem;
+  .title-area .name h1 {
+    font-family: "Courier New";
+    font-size: 2.3rem;
+    margin-top: .8rem;
+  }
+
+  .header-icon {
+    height: 5rem;
+    margin-left: 3rem;
+  }
 }
 
 /**********************************************************
@@ -88,7 +98,8 @@ Tutorial Index Page Styling
   margin: .5rem;
 }
 
-.tutorial-thumbnail a:link {
+.tutorial-thumbnail-wrapper a {
+  color: black;
   text-decoration: none;
 }
 
