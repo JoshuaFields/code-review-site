@@ -1,7 +1,7 @@
 /* Color Definitions */
 $dark-gray: #2e2e2e;
 $dark-gray-hover: #262626;
-$opaque-white: rgba(255, 255, 255, .65);
+$opaque-white: rgba(255, 255, 255, 0.65);
 $flash-color: #962424;
 $black: #000000;
 
@@ -35,8 +35,8 @@ body {
 }
 
 .flash {
-  padding: 1em;
   background-color: $flash-color;
+  padding: 1em;
 }
 
 /**********************************************************
@@ -82,7 +82,6 @@ Tutorial Index Page Styling
 }
 
 .tutorial-thumbnail-wrapper {
-  background-color: rgba(253, 153, 0,.5);
   background-color: $opaque-white;
   border: 1px solid $dark-gray;
   padding: 3rem;
