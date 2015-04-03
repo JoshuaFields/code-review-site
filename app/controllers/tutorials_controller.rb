@@ -43,9 +43,9 @@ class TutorialsController < ApplicationController
   end
 
   def search
-    search_term = PGconn.quote_ident(params[:search])
-    @results = ActiveRecord::Base.connection.execute("SELECT id, title FROM " \
-      "tutorials WHERE to_tsvector(title) @@ plainto_tsquery('#{search_term}')")
+    @results = Tutorial.select(:id, :title).where(
+      "to_tsvector(title) @@ plainto_tsquery(?)", [params[:search]]
+    )
   end
 
   private

@@ -24,7 +24,7 @@
           <li><%= link_to 'Sign In', new_user_session_path %></li>
         <%- end -%>
         <li>
-          <%= form_tag( tutorials_search_path, method: "get") do %>
+          <%= form_tag(tutorials_search_path, method: "get") do %>
             <%= text_field_tag(:search) %>
             <%= submit_tag("Search") %>
           <% end %>
