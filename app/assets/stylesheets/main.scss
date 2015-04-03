@@ -1,8 +1,9 @@
 /* Color Definitions */
-$dark_gray: #2e2e2e;
-$dark_gray_hover: #262626;
-$opaque_white: rgba(255, 255, 255, .65);
-$flash_color: #962424;
+$dark-gray: #2e2e2e;
+$dark-gray-hover: #262626;
+$opaque-white: rgba(255, 255, 255, .65);
+$flash-color: #962424;
+$black: #000000;
 
 /*
 @font-face {
@@ -14,20 +15,19 @@ $flash_color: #962424;
 General Styling
 **********************************************************/
 body {
-  background: url(review-background.jpg) center;
+  background: url("review-background.jpg") center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
-
 .button {
-  background-color: $dark_gray;
+  background-color: $dark-gray;
 }
 
 .button:hover {
-  background-color: $dark_gray_hover;
+  background-color: $dark-gray-hover;
 }
 
 .longer-row {
@@ -35,8 +35,8 @@ body {
 }
 
 .flash {
-   padding: 1em;
-   background-color: $flash_color;
+  padding: 1em;
+  background-color: $flash-color;
 }
 
 /**********************************************************
@@ -44,7 +44,7 @@ Nav Bar Styling
 **********************************************************/
 .top-bar {
   height: 5rem;
-  background-color: $dark_gray;
+  background-color: $dark-gray;
 }
 
 .top-bar-section .right li a {
@@ -68,8 +68,8 @@ Devise Styling
 **********************************************************/
 .devise-content-wrapper {
   margin-top: 14rem;
-  background-color: $opaque_white;
-  border: 1px solid $dark_gray;
+  background-color: $opaque-white;
+  border: 1px solid $dark-gray;
 }
 
 /**********************************************************
@@ -77,14 +77,14 @@ Tutorial Index Page Styling
 **********************************************************/
 .tutorial-index-wrapper {
   margin: 5rem 0;
-  background-color: $opaque_white;
-  border: 1px solid $dark_gray;
+  background-color: $opaque-white;
+  border: 1px solid $dark-gray;
 }
 
 .tutorial-thumbnail-wrapper {
   background-color: rgba(253, 153, 0,.5);
-  background-color: $opaque_white;
-  border: 1px solid $dark_gray;
+  background-color: $opaque-white;
+  border: 1px solid $dark-gray;
   padding: 3rem;
   margin: .5rem;
 }
@@ -103,8 +103,8 @@ New Tutorial Page Styling
 **********************************************************/
 .new-tutorial-wrapper {
   margin-top: 14rem;
-  background-color: $opaque_white;
-  border: 1px solid $dark_gray;
+  background-color: $opaque-white;
+  border: 1px solid $dark-gray;
 }
 
 #tutorial-back-button {
@@ -117,12 +117,12 @@ Show Tutorial Page Styling
 **********************************************************/
 .show-tutorial-wrapper {
   margin-top: 5rem;
-  background-color: $opaque_white;
-  border: 1px solid $dark_gray;
+  background-color: $opaque-white;
+  border: 1px solid $dark-gray;
 }
 
 .review-wrapper {
-  border-bottom: 1px solid $dark_gray;
+  border-bottom: 1px solid $dark-gray;
   margin-bottom: 1rem;
 }
 
