@@ -63,7 +63,7 @@
     <%= form_for([@tutorial, @tutorial.reviews.build]) do |f| %>
         <%= f.label :rating %>
         <%= f.select :rating, %w(1 2 3 4 5), prompt: 'Select' %>
-                <%= f.label :body %>
+        <%= f.label :body %>
         <%= f.text_area :body %>
 
         <%= f.submit "Add Review", class: "button" %>
