@@ -1,7 +1,9 @@
 /* Color Definitions */
-$dark_gray: #333;
-$dark_gray_hover: #262626;
-$opaque_white: rgba(255, 255, 255, .65);
+$dark-gray: #2e2e2e;
+$dark-gray-hover: #262626;
+$opaque-white: rgba(255, 255, 255, 0.65);
+$flash-color: #962424;
+$black: #000000;
 
 /*
 @font-face {
@@ -13,7 +15,7 @@ $opaque_white: rgba(255, 255, 255, .65);
 General Styling
 **********************************************************/
 body {
-  background: url(review-background.jpg) no-repeat center;
+  background: url("review-background.jpg") center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -21,32 +23,54 @@ body {
 }
 
 .button {
-  background-color: $dark_gray;
+  background-color: $dark-gray;
 }
 
 .button:hover {
-  background-color: $dark_gray_hover;
+  background-color: $dark-gray-hover;
 }
 
 .longer-row {
   max-width: 130rem;
 }
+
+.flash {
+  background-color: $flash-color;
+  padding: 1em;
+}
+
 /**********************************************************
 Nav Bar Styling
 **********************************************************/
 .top-bar {
   height: 5rem;
-}
+  background-color: $dark-gray;
 
-.top-bar-section .right li a {
-  font-size: 1.8rem;
-  margin-top: .8rem;
-}
+  .top-bar-section {
+    li:not(.has-form) a:not(.button),
+    li:not(.has-form) a:not(.button):hover,
+    ul li,
+    ul li:hover:not(.has-form) > a {
+      background-color: $dark-gray;
+      background: $dark-gray;
+    }
 
-.title-area .name h1 {
-  font-family: "Courier New";
-  font-size: 2.3rem;
-  margin-top: .8rem;
+  .right li a {
+      font-size: 1.8rem;
+      margin-top: 0.8rem;
+    }
+  }
+
+  .title-area .name h1 {
+    font-family: "Courier New";
+    font-size: 2.3rem;
+    margin-top: 0.8rem;
+  }
+
+  .header-icon {
+    height: 5rem;
+    margin-left: 3rem;
+  }
 }
 
 /**********************************************************
@@ -54,8 +78,8 @@ Devise Styling
 **********************************************************/
 .devise-content-wrapper {
   margin-top: 14rem;
-  background-color: $opaque_white;
-  border: 1px solid $dark_gray;
+  background-color: $opaque-white;
+  border: 1px solid $dark-gray;
 }
 
 /**********************************************************
@@ -63,29 +87,34 @@ Tutorial Index Page Styling
 **********************************************************/
 .tutorial-index-wrapper {
   margin: 5rem 0;
-  background-color: $opaque_white;
-  border: 1px solid $dark_gray;
+  background-color: $opaque-white;
+  border: 1px solid $dark-gray;
 }
 
 .tutorial-thumbnail-wrapper {
-  background-color: rgba(253, 153, 0,.5);
-  background-color: $opaque_white;
-  border: 1px solid $dark_gray;
+  background-color: $opaque-white;
+  border: 1px solid $dark-gray;
   padding: 3rem;
   margin: .5rem;
+}
+
+.tutorial-thumbnail-wrapper a {
+  color: #000000;
+  text-decoration: none;
 }
 
 .tutorial-thumbnail {
   width: 100%;
   height: 100%;
 }
+
 /**********************************************************
 New Tutorial Page Styling
 **********************************************************/
 .new-tutorial-wrapper {
   margin-top: 14rem;
-  background-color: $opaque_white;
-  border: 1px solid $dark_gray;
+  background-color: $opaque-white;
+  border: 1px solid $dark-gray;
 }
 
 #tutorial-back-button {
@@ -98,6 +127,23 @@ Show Tutorial Page Styling
 **********************************************************/
 .show-tutorial-wrapper {
   margin-top: 5rem;
-  background-color: $opaque_white;
-  border: 1px solid $dark_gray;
+  background-color: $opaque-white;
+  border: 1px solid $dark-gray;
+}
+
+.review-wrapper {
+  border-bottom: 1px solid $dark-gray;
+  margin-bottom: 1rem;
+}
+
+.upvote-img {
+  display: block;
+}
+
+.vote-score {
+  display: block;
+}
+
+.downvote-img {
+  display: block;
 }
