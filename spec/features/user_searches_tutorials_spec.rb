@@ -40,7 +40,7 @@ feature %(
 
   scenario "Destructive SQL query" do
     visit tutorials_path
-    fill_in :search, with: "a;DROP TABLE tutorials;--"
+    fill_in :search, with: "a');DROP TABLE tutorials;--"
     click_button "Search"
     visit tutorials_path
     expect(page).to have_content("Great title!")
