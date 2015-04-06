@@ -6,8 +6,8 @@ feature %(
   So that mortals may tremble at our presence
 ) do
   let!(:admin) { FactoryGirl.create(:user, admin: true) }
-  let(:admin_two) { FactoryGirl.create(:user, admin: true) }
-  let(:user) { FactoryGirl.create(:user) }
+  let!(:admin_two) { FactoryGirl.create(:user, admin: true) }
+  let!(:user) { FactoryGirl.create(:user) }
 
   scenario "promotes user to admin" do
     visit new_user_session_path
