@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   authenticate :user do
+    resources :users, only: %i(index)
     resources :tutorials, only: %i(new create edit update)
   end
 

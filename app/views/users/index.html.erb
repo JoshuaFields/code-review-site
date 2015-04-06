@@ -1,0 +1,23 @@
+<h1>List of Users</h1>
+<table>
+  <tr>
+    <th>Email</th>
+    <th>Admin?</th>
+    <th>Last Sign In</th>
+    <th>Last IP</th>
+    <th>Sign In Count</th>
+    <th>Account Created</th>
+    <th>Delete Account</th>
+  </tr>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.email %></td>
+    <td><%= user.admin %></td>
+    <td><%= user.last_sign_in_at %></td>
+    <td><%= user.last_sign_in_ip %></td>
+    <td><%= user.sign_in_count %></td>
+    <td><%= user.created_at %></td>
+    <td>Delete User</td>
+  </tr>
+<% end %>
+</table>
