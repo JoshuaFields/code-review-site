@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature %(
-  As an admin
+  As a God
   I want to view a list of users
   So that I can cull the weak from the herd.
 ) do
