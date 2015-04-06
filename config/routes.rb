@@ -3,23 +3,18 @@ Rails.application.routes.draw do
 
   patch "users/:id", to: "users#toggle_admin", as: "toggle_admin"
 
-  authenticate :user do
-    resources :users, only: %i(index destroy toggle_admin)
-    resources :tutorials, only: %i(new create edit update destroy)
-  end
+  resources :users, only: %i(index destroy toggle_admin)
 
   get "tutorials/search", to: "tutorials#search"
 
-  resources :tutorials, only: %i(index show) do
+  resources :tutorials, only: %i(index show new create edit update destroy) do
     resources :reviews, only: %i(index) do
       member do
         put "like", to: "reviews#upvote"
         put "dislike", to: "reviews#downvote"
       end
     end
-    authenticate :user do
-      resources :reviews, only: %i(create destroy)
-    end
+    resources :reviews, only: %i(create destroy)
   end
 
   root 'tutorials#index'

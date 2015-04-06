@@ -2,20 +2,13 @@ require "rails_helper"
 
 feature %(
   As a God
-  I want to be able to end all memory of my users' reviews and comments
+  I want to be able to end all memory of my users' submissions and reviews
   So that which offends my greatness shall perish from their wretched mouths
 ) do
-  let(:test_admin) { FactoryGirl.create(:user, admin: true) }
-  let(:test_user) { FactoryGirl.create(:user) }
-  let(:test_review) { FactoryGirl.create(:review) }
-  let(:test_tutorial) { FactoryGirl.create(:tutorial) }
-
-  before(:each) do
-    test_admin.save
-    test_user.save
-    test_review.save
-    test_tutorial.save
-  end
+  let!(:test_admin) { FactoryGirl.create(:user, admin: true) }
+  let!(:test_user) { FactoryGirl.create(:user) }
+  let!(:test_review) { FactoryGirl.create(:review) }
+  let!(:test_tutorial) { FactoryGirl.create(:tutorial) }
 
   scenario "Not an admin" do
     visit new_user_session_path

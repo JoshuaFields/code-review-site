@@ -5,7 +5,7 @@ feature %(
   I want to be able to invite my fellow Gods to Mt. Olympus
   So that mortals may tremble at our presence
 ) do
-  let(:test_admin) { FactoryGirl.create(:user, admin: true) }
+  let!(:test_admin) { FactoryGirl.create(:user, admin: true) }
   let(:test_admin_two) { FactoryGirl.create(:user, admin: true) }
   let(:test_user) { FactoryGirl.create(:user) }
 
@@ -52,7 +52,6 @@ feature %(
 
     click_button "Log in"
 
-    test_admin.save
     visit users_path
 
     expect(page).to have_content(test_admin.email)
