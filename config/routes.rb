@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   authenticate :user do
     resources :users, only: %i(index destroy toggle_admin)
-    resources :tutorials, only: %i(new create edit update)
+    resources :tutorials, only: %i(new create edit update destroy)
   end
 
   get "tutorials/search", to: "tutorials#search"
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       end
     end
     authenticate :user do
-      resources :reviews, only: %i(create)
+      resources :reviews, only: %i(create destroy)
     end
   end
 
