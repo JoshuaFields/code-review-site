@@ -1,4 +1,7 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authorize_admin!, only: %i(destroy)
+
   def create
     @tutorial = Tutorial.find(params[:tutorial_id])
     @review = @tutorial.reviews.new(review_params)
@@ -29,15 +32,8 @@ class ReviewsController < ApplicationController
   def destroy
     @tutorial = Tutorial.find(params[:tutorial_id])
     @review = @tutorial.reviews.find(params[:id])
-    if current_user.admin? && @review.destroy
-      redirect_to tutorial_path(@tutorial)
-    elsif current_user.admin?
-      flash[:notice] = @review.errors.full_messages.join("! ")
-      render 'tutorials/show'
-    else
-      flash[:notice] = "This page requires admin privileges!"
-      redirect_to tutorial_path(@tutorial)
-    end
+    @review.destroy
+    redirect_to tutorial_path(@tutorial)
   end
 
   private

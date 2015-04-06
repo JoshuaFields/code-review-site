@@ -1,4 +1,7 @@
 class TutorialsController < ApplicationController
+  before_action :authenticate_user!, except: %i(index show search)
+  before_action :authorize_admin!, only: %i(destroy)
+
   def index
     @tutorials = Tutorial.all.page(params[:page]).per(3)
   end
@@ -44,15 +47,8 @@ class TutorialsController < ApplicationController
 
   def destroy
     @tutorial = Tutorial.find(params[:id])
-    if current_user.admin? && @tutorial.destroy
-      redirect_to tutorials_path
-    elsif current_user.admin?
-      flash[:notice] = @tutorial.errors.full_messages.join("! ")
-      redirect_to tutorials_path
-    else
-      flash[:notice] = "This page requires admin privileges!"
-      redirect_to tutorials_path
-    end
+    @tutorial.destroy
+    redirect_to tutorials_path
   end
 
   def search

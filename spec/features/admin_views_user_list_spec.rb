@@ -5,13 +5,8 @@ feature %(
   I want to view a list of users
   So that I can cull the weak from the herd.
 ) do
-  let(:test_admin) { FactoryGirl.create(:user, admin: true) }
-  let(:test_user) { FactoryGirl.create(:user) }
-
-  before(:each) do
-    test_admin.save
-    test_user.save
-  end
+  let!(:test_admin) { FactoryGirl.create(:user, admin: true) }
+  let!(:test_user) { FactoryGirl.create(:user) }
 
   scenario "valid admin account" do
     visit new_user_session_path
