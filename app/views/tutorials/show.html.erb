@@ -41,10 +41,12 @@
       </p>
     <% end %>
   </div>
-  <div class="small-12 column">
-    <%= link_to "Delete Review", tutorial_path(@tutorial),
-     method: :delete, class: "button tiny" %>
-  </div>
+  <% if current_user.try(:admin?) %>
+    <div class="small-12 column">
+      <%= link_to "Delete Tutorial", tutorial_path(@tutorial),
+       method: :delete, class: "button tiny" %>
+    </div>
+  <% end %>
 </div>
 
 <div class="row">
@@ -61,9 +63,12 @@
             <span class="stars-holder" id='<%= "#{review.id}" %>'><%= "#{review.rating}" %></span>
             <p><%= review.body %></p>
           </div>
-          <div class="delete-review-container small-12 column">
-            <%= link_to "Delete Review", tutorial_review_path(@tutorial, review), method: :delete, class: "button tiny" %>
-          </div>
+          <% if current_user.try(:admin?) %>
+            <div class="delete-review-container small-12 column">
+              <%= link_to "Delete Review", tutorial_review_path(@tutorial, review),
+                method: :delete, class: "button tiny" %>
+            </div>
+          <% end %>
         </div>
       <% end %>
     <% end %>
