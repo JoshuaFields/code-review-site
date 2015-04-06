@@ -49,18 +49,23 @@
       <% if review.id %>
         <div class="row review-wrapper">
             <div class="small-1 column">
+              <div class="review-image">
+                <%= image_tag(review.user.profile_photo.url) %> <br>
+              </div>
               <%= link_to "upvote", like_tutorial_review_path(@tutorial, review), method: :put, class: "upvote-img"%>
               <h6 class="vote-score"><%= review.score %></h6>
               <%= link_to "downvote", dislike_tutorial_review_path(@tutorial, review), method: :put, class: "downvote-img" %>
             </div>
             <div class="small-11 column">
+              <b><%= review.user.email %>'s review of <%= @tutorial.title %></b>
               <span class="stars-holder" id='<%= "#{review.id}" %>'><%= "#{review.rating}" %></span>
               <p><%= review.body %></p>
             </div>
           </div>
       <% end %>
     <% end %>
-
+  </div>
+  <div class="small-12 column show-tutorial-wrapper">
     <%= form_for([@tutorial, @tutorial.reviews.build]) do |f| %>
         <%= f.label :rating %>
         <%= f.select :rating, %w(1 2 3 4 5), prompt: 'Select' %>
@@ -68,17 +73,6 @@
         <%= f.text_area :body %>
 
         <%= f.submit "Add Review", class: "button" %>
-    <% end %>
-
-    <% @tutorial.reviews.each do |review| %>
-      <% if review.id != nil %>
-        <p>
-          <div class="new-line"><strong>Review:</strong>
-          <%= review.body %></div>
-          <div class="new-line"><strong>Rating:</strong>
-          <%= review.rating %></div>
-        </p>
-      <% end %>
     <% end %>
   </div>
 </div>
