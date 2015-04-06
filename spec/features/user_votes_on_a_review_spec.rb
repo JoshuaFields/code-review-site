@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature %q(
+feature %(
   As a user
   I want to vote on a tutorial's review
   So that I can voice my opinion on its usefulness
