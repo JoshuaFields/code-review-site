@@ -19,9 +19,10 @@
       <td><%= user.sign_in_count %></td>
       <td><%= user.created_at %></td>
       <td><%= button_to "Delete account", user_path(user),
-        method: :delete, class: "button tiny" %></td>
+        method: :delete, class: "button tiny", id: "delete#{user.id}" %></td>
       <% message = user.admin? ? "Cast down to Hades" : "Serve ambrosia on Mt. Olympus" %>
-      <td><%= button_to message, toggle_admin_path(user), method: :patch, class: "button tiny"%></td>
+      <td><%= button_to message, toggle_admin_path(user), method: :patch,
+        class: "button tiny", id: "toggle#{user.id}" %></td>
     </tr>
   <% end %>
 </table>
