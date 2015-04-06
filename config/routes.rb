@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  patch "users/:id", to: "users#toggle_admin", as: "toggle_admin"
+
   authenticate :user do
-    resources :users, only: %i(index)
+    resources :users, only: %i(index destroy toggle_admin)
     resources :tutorials, only: %i(new create edit update)
   end
 
-  get 'tutorials/search', to: 'tutorials#search'
+  get "tutorials/search", to: "tutorials#search"
 
   resources :tutorials, only: %i(index show) do
     resources :reviews, only: %i(index) do
