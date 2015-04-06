@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
   # Should NOT destroy dependent reviews/tutorials when deleted.
   has_many :reviews
   has_many :tutorials
+
+  mount_uploader :profile_photo, ProfilePhotoUploader
+  # <%= image_tag(User.find(1).profile_photo.url) %>
 end
