@@ -5,22 +5,10 @@ feature %(
   I want to be able to damn users' souls
   So that I can be sure their sacrifices shall please me
 ) do
-  let(:test_admin) { FactoryGirl.create(:user, admin: true) }
-  let(:test_user) { FactoryGirl.create(:user) }
+  let!(:test_admin) { FactoryGirl.create(:user, admin: true) }
+  let!(:test_user) { FactoryGirl.create(:user) }
 
   scenario "Deletes user" do
-    visit new_user_session_path
-    fill_in "Email", with: test_user.email
-    fill_in "Password", with: test_user.password
-
-    click_button "Log in"
-
-    visit users_path
-
-    expect(page).to have_content("This page requires admin privileges!")
-
-    click_link "Sign Out"
-
     visit new_user_session_path
     fill_in "Email", with: test_admin.email
     fill_in "Password", with: test_admin.password
