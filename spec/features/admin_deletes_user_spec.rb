@@ -5,29 +5,29 @@ feature %(
   I want to be able to damn users' souls
   So that I can be sure their sacrifices shall please me
 ) do
-  let!(:test_admin) { FactoryGirl.create(:user, admin: true) }
-  let!(:test_user) { FactoryGirl.create(:user) }
+  let!(:admin) { FactoryGirl.create(:user, admin: true) }
+  let!(:user) { FactoryGirl.create(:user) }
 
   scenario "Deletes user" do
     visit new_user_session_path
-    fill_in "Email", with: test_admin.email
-    fill_in "Password", with: test_admin.password
+    fill_in "Email", with: admin.email
+    fill_in "Password", with: admin.password
 
     click_button "Log in"
 
     visit users_path
 
-    expect(page).to have_content(test_user.email)
+    expect(page).to have_content(user.email)
 
-    click_button "delete#{test_user.id}"
+    click_button "delete#{user.id}"
 
-    expect(page).to_not have_content(test_user.email)
+    expect(page).to_not have_content(user.email)
 
     click_link "Sign Out"
 
     visit new_user_session_path
-    fill_in "Email", with: test_user.email
-    fill_in "Password", with: test_user.password
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
 
     click_button "Log in"
 

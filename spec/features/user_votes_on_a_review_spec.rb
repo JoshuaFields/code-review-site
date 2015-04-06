@@ -19,11 +19,11 @@ feature %(
     end
 
     scenario 'User views a tutorial with a review' do
-      testreview = FactoryGirl.create(:review)
+      review = FactoryGirl.create(:review)
 
-      visit tutorial_path(testreview.tutorial)
+      visit tutorial_path(review.tutorial)
 
-      expect(page).to have_content(testreview.body)
+      expect(page).to have_content(review.body)
       expect(page).to have_content("upvote 0 downvote")
 
       click_on("upvote")
