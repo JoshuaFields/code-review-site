@@ -42,6 +42,19 @@ class TutorialsController < ApplicationController
     end
   end
 
+  def destroy
+    @tutorial = Tutorial.find(params[:id])
+    if current_user.admin? && @tutorial.destroy
+      redirect_to tutorials_path
+    elsif current_user.admin?
+      flash[:notice] = @tutorial.errors.full_messages.join("! ")
+      redirect_to tutorials_path
+    else
+      flash[:notice] = "This page requires admin privileges!"
+      redirect_to tutorials_path
+    end
+  end
+
   def search
     @results = Tutorial.select(:id, :title).where(
       "to_tsvector(title) @@ plainto_tsquery(?)", [params[:search]]

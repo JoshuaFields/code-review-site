@@ -9,9 +9,11 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    if current_user.admin?
-      @user.destroy
+    if current_user.admin? && @user.destroy
       redirect_to users_path
+    elsif current_user.admin?
+      flash[:notice] = @tutorial.errors.full_messages.join("! ")
+      render 'index'
     else
       flash[:notice] = "This page requires admin privileges!"
       redirect_to tutorials_path
@@ -20,9 +22,11 @@ class UsersController < ApplicationController
 
   def toggle_admin
     @user = User.find(params[:id])
-    if current_user.admin?
-      @user.update(admin: !@user.admin)
+    if current_user.admin? && @user.update(admin: !@user.admin)
       redirect_to users_path
+    elsif current_user.admin?
+      flash[:notice] = @tutorial.errors.full_messages.join("! ")
+      render 'index'
     else
       flash[:notice] = "This page requires admin privileges!"
       redirect_to tutorials_path
