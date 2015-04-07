@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-feature %q(
+feature %(
   As a user
   I want to view only 10 tutorials on the index page
   So that I'm not overwhelmed
-  ) do
+) do
   scenario 'user views specific tutorial' do
     11.times { FactoryGirl.create(:tutorial) }
 

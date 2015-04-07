@@ -6,9 +6,10 @@ feature %(
   so that others can know my important opinion.
 ) do
   context "user is signed in" do
-    before(:each) do
-      user = FactoryGirl.create(:user)
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:tutorial) { FactoryGirl.create(:tutorial, user: user) }
 
+    before(:each) do
       visit new_user_session_path
 
       fill_in 'Email', with: user.email
@@ -18,8 +19,7 @@ feature %(
     end
 
     scenario 'Submits a new review' do
-      test_tutorial = FactoryGirl.create(:tutorial)
-      visit tutorial_path(test_tutorial.id)
+      visit tutorial_path(tutorial.id)
       select '4', from: 'Rating'
       fill_in 'Body', with: 'This is a totally awesome tutorial!'
 
@@ -32,8 +32,8 @@ feature %(
 
   context "user is not signed in" do
     scenario 'Submits a new review' do
-      test_tutorial = FactoryGirl.create(:tutorial)
-      visit tutorial_path(test_tutorial.id)
+      tutorial = FactoryGirl.create(:tutorial)
+      visit tutorial_path(tutorial.id)
       select '4', from: 'Rating'
       fill_in 'Body', with: 'This is a totally awesome tutorial!'
 

@@ -41,6 +41,12 @@
       </p>
     <% end %>
   </div>
+  <% if current_user.try(:admin?) %>
+    <div class="small-12 column">
+      <%= link_to "Delete Tutorial", tutorial_path(@tutorial),
+       method: :delete, class: "button tiny" %>
+    </div>
+  <% end %>
 </div>
 
 <div class="row">
@@ -48,16 +54,22 @@
     <% @tutorial.reviews.each do |review| %>
       <% if review.id %>
         <div class="row review-wrapper">
-            <div class="small-1 column">
-              <%= link_to "upvote", like_tutorial_review_path(@tutorial, review), method: :put, class: "upvote-img"%>
-              <h6 class="vote-score"><%= review.score %></h6>
-              <%= link_to "downvote", dislike_tutorial_review_path(@tutorial, review), method: :put, class: "downvote-img" %>
-            </div>
-            <div class="small-11 column">
-              <span class="stars-holder" id='<%= "#{review.id}" %>'><%= "#{review.rating}" %></span>
-              <p><%= review.body %></p>
-            </div>
+          <div class="small-1 column">
+            <%= link_to "upvote", like_tutorial_review_path(@tutorial, review), method: :put, class: "upvote-img"%>
+            <h6 class="vote-score"><%= review.score %></h6>
+            <%= link_to "downvote", dislike_tutorial_review_path(@tutorial, review), method: :put, class: "downvote-img" %>
           </div>
+          <div class="small-11 column">
+            <span class="stars-holder" id='<%= "#{review.id}" %>'><%= "#{review.rating}" %></span>
+            <p><%= review.body %></p>
+          </div>
+          <% if current_user.try(:admin?) %>
+            <div class="delete-review-container small-12 column">
+              <%= link_to "Delete Review", tutorial_review_path(@tutorial, review),
+                method: :delete, class: "button tiny" %>
+            </div>
+          <% end %>
+        </div>
       <% end %>
     <% end %>
 
@@ -68,17 +80,6 @@
         <%= f.text_area :body %>
 
         <%= f.submit "Add Review", class: "button" %>
-    <% end %>
-
-    <% @tutorial.reviews.each do |review| %>
-      <% if review.id != nil %>
-        <p>
-          <div class="new-line"><strong>Review:</strong>
-          <%= review.body %></div>
-          <div class="new-line"><strong>Rating:</strong>
-          <%= review.rating %></div>
-        </p>
-      <% end %>
     <% end %>
   </div>
 </div>
