@@ -1,0 +1,28 @@
+<h1>List of Users</h1>
+<table>
+  <tr>
+    <th>Email</th>
+    <th>A God Am I?</th>
+    <th>Last Sign In</th>
+    <th>Last IP</th>
+    <th>Sign In Count</th>
+    <th>Account Created</th>
+    <th>Delete Account</th>
+    <th>Deify</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.admin %></td>
+      <td><%= user.last_sign_in_at %></td>
+      <td><%= user.last_sign_in_ip %></td>
+      <td><%= user.sign_in_count %></td>
+      <td><%= user.created_at %></td>
+      <td><%= button_to "Delete account", user_path(user),
+        method: :delete, class: "button tiny", id: "delete#{user.id}" %></td>
+      <% message = user.admin? ? "Cast down to Hades" : "Serve ambrosia on Mt. Olympus" %>
+      <td><%= button_to message, toggle_admin_path(user), method: :patch,
+        class: "button tiny", id: "toggle#{user.id}" %></td>
+    </tr>
+  <% end %>
+</table>

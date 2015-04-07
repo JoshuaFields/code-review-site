@@ -6,48 +6,44 @@ feature %(
   So that other users can learn about and review a cool resource
 ) do
   context "user is signed in" do
-    let(:test_user) { FactoryGirl.create(:user) }
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:tutorial) { FactoryGirl.create(:tutorial, user: user) }
+    let!(:second_tutorial) { FactoryGirl.create(:tutorial, user: user) }
 
     before(:each) do
       visit new_user_session_path
-      fill_in "Email", with: test_user.email
-      fill_in "Password", with: test_user.password
+      fill_in "Email", with: user.email
+      fill_in "Password", with: user.password
 
       click_button "Log in"
     end
 
     scenario "fields are pre-populated with existing information" do
-      test_tut = FactoryGirl.create(:tutorial, user: test_user)
-      visit edit_tutorial_path(test_tut)
-      expect(page).to have_field("Title", with: test_tut.title)
-      expect(page).to have_field("Url", with: test_tut.url)
-      expect(page).to have_field("Organization", with: test_tut.organization)
-      # expect(page).to have_select("Cost", selected: test_tut.cost)
-      expect(page).to have_field("Language", with: test_tut.language)
-      expect(page).to have_field("Description", with: test_tut.description)
+      visit edit_tutorial_path(tutorial)
+      expect(page).to have_field("Title", with: tutorial.title)
+      expect(page).to have_field("Url", with: tutorial.url)
+      expect(page).to have_field("Organization", with: tutorial.organization)
+      # expect(page).to have_select("Cost", selected: tutorial.cost)
+      expect(page).to have_field("Language", with: tutorial.language)
+      expect(page).to have_field("Description", with: tutorial.description)
     end
 
     scenario "user wants to go back to tutorial index page" do
-      first_tut = FactoryGirl.create(:tutorial, user: test_user)
-      second_tut = FactoryGirl.create(:tutorial, user: test_user)
-      visit edit_tutorial_path(first_tut)
+      visit edit_tutorial_path(tutorial)
       click_link "Home"
-      expect(page).to have_content(first_tut.title)
-      expect(page).to have_content(second_tut.title)
+      expect(page).to have_content(tutorial.title)
+      expect(page).to have_content(second_tutorial.title)
     end
 
     scenario "user wants to go back to tutorial show page" do
-      first_tut = FactoryGirl.create(:tutorial, user: test_user)
-      second_tut = FactoryGirl.create(:tutorial, user: test_user)
-      visit edit_tutorial_path(first_tut)
+      visit edit_tutorial_path(tutorial)
       click_link "Back"
-      expect(page).to have_content(first_tut.title)
-      expect(page).to have_no_content(second_tut.title)
+      expect(page).to have_content(tutorial.title)
+      expect(page).to have_no_content(second_tutorial.title)
     end
 
     scenario "user edits tutorial with valid information" do
-      test_tut = FactoryGirl.create(:tutorial, user: test_user)
-      visit edit_tutorial_path(test_tut)
+      visit edit_tutorial_path(tutorial)
       fill_in "Title", with: "A Sweet Rails Tutorial"
       fill_in "Url",
         with: "https://www.codeschool.com/courses/rails-for-zombies-redux"
@@ -62,8 +58,7 @@ feature %(
     end
 
     scenario 'user tries to edit tutorial with missing information' do
-      test_tut = FactoryGirl.create(:tutorial, user: test_user)
-      visit edit_tutorial_path(test_tut)
+      visit edit_tutorial_path(tutorial)
       fill_in "Title", with: "A Sweet Rails Tutorial"
       fill_in "Language", with: "Ruby"
       fill_in "Url", with: nil
@@ -79,8 +74,8 @@ feature %(
 
   context "user isn't signed in" do
     scenario "user tries to edit tutorial" do
-      test_tut = FactoryGirl.create(:tutorial)
-      visit edit_tutorial_path(test_tut)
+      tutorial = FactoryGirl.create(:tutorial)
+      visit edit_tutorial_path(tutorial)
 
       expect(page).to have_no_content("Organization")
     end

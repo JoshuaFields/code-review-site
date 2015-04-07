@@ -17,6 +17,9 @@
     <section class="top-bar-section">
       <ul class="right">
         <%- if current_user -%>
+          <% if current_user.admin? %>
+            <li><%= link_to 'Users List', users_path, class: "account-button" %></li>
+          <% end %>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "account-button" %></li>
           <li><%= link_to "Update Your Account", edit_user_registration_path, class: "account-button"  %></li>
         <%- else -%>
