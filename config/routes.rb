@@ -8,13 +8,7 @@ Rails.application.routes.draw do
   get "tutorials/search", to: "tutorials#search"
 
   resources :tutorials, only: %i(index show new create edit update destroy) do
-    resources :reviews, only: %i(index) do
-      member do
-        put "like", to: "reviews#upvote"
-        put "dislike", to: "reviews#downvote"
-      end
-    end
-    resources :reviews, only: %i(create destroy)
+    resources :reviews, only: %i(index create destroy)
   end
 
   root 'tutorials#index'
