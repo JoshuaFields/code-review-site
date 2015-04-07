@@ -53,6 +53,11 @@
   <div class="small-12 column show-tutorial-wrapper">
     <% @tutorial.reviews.each do |review| %>
       <% if review.id %>
+        <div class="small-1 column">
+          <%= link_to "upvote", upvote_path(@tutorial, review), method: :put, class: "upvote-img"%>
+          <h6 class="vote-score"><%= review.score %></h6>
+          <%= link_to "downvote", downvote_path(@tutorial, review), method: :put, class: "downvote-img" %>
+        </div>
         <div class="row review-wrapper">
           <div class="small-11 column">
             <span class="stars-holder" id='<%= "#{review.id}" %>'><%= "#{review.rating}" %></span>

@@ -22,6 +22,26 @@ class ReviewsController < ApplicationController
     redirect_to tutorial_path(@tutorial)
   end
 
+  def upvote
+    @user = current_user.id
+    if $redis.zscore(params[:id], @user) == 1
+      $redis.zadd(params[:id], 0, @user)
+    else
+      $redis.zadd(params[:id], 1, @user)
+    end
+    redirect_to tutorial_path(params[:tutorial_id])
+  end
+
+  def downvote
+    @user = current_user.id
+    if $redis.zscore(params[:id], @user) == -1
+      $redis.zadd(params[:id], 0, @user)
+    else
+      $redis.zadd(params[:id], -1, @user)
+    end
+    redirect_to tutorial_path(params[:tutorial_id])
+  end
+
   private
 
   def review_params
