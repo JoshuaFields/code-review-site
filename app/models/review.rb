@@ -10,8 +10,8 @@ class Review < ActiveRecord::Base
   }
 
   def score
-    if $redis.exists(self.id)
-      $redis.zcount(self.id, 1, 1) - $redis.zcount(self.id, -1, -1)
+    if $redis.exists(id)
+      $redis.zcount(id, 1, 1) - $redis.zcount(id, -1, -1)
     else
       0
     end
