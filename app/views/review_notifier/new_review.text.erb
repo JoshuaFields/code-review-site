@@ -1,5 +1,11 @@
 Hello <%= @review.tutorial.user.email %>,
 
-<%= @review.user.email %> has left a new review for your product <%= @review.tutorial.title %>.
+Someone has left a new review for your tutorial: <%= @review.tutorial.title %>.
 
-Peace!
+They left it a rating of <%= @review.rating %> stars.
+
+Check it out!
+
+Thank you,
+
+Code Review Team
