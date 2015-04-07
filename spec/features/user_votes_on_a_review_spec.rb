@@ -18,7 +18,7 @@ feature %(
       click_button "Log in"
     end
 
-    pending 'User views a tutorial with a review' do
+    scenario 'User views a tutorial with a review' do
       review = FactoryGirl.create(:review)
 
       visit tutorial_path(review.tutorial)
@@ -29,6 +29,14 @@ feature %(
       click_on("upvote")
 
       expect(page).to have_content("upvote 1 downvote")
+
+      click_on("upvote")
+
+      expect(page).to have_content("upvote 0 downvote")
+
+      click_on("downvote")
+
+      expect(page).to have_content("upvote -1 downvote")
     end
   end
 end

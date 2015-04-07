@@ -8,4 +8,12 @@ class Review < ActiveRecord::Base
   validates :rating, presence: true, numericality: {
     only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5
   }
+
+  def score
+    if $redis.exists(self.id)
+      $redis.zcount(self.id, 1, 1) - $redis.zcount(self.id, -1, -1)
+    else
+      0
+    end
+  end
 end
