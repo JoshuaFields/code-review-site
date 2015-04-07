@@ -2,8 +2,12 @@
 $dark-gray: #2e2e2e;
 $dark-gray-hover: #262626;
 $opaque-white: rgba(255, 255, 255, 0.65);
-$flash-color: #962424;
 $black: #000000;
+$light-grey: #ECEBE8;
+$orange: rgb(214,71,31);
+$old-flash-color: #962424;
+$flash-color: $orange;
+$blue: rgb(0, 145, 208);
 
 /*
 @font-face {
@@ -88,14 +92,12 @@ Tutorial Index Page Styling
 .tutorial-index-wrapper {
   margin: 5rem 0;
   background-color: $opaque-white;
-  border: 1px solid $dark-gray;
 }
 
 .tutorial-thumbnail-wrapper {
   background-color: $opaque-white;
-  border: 1px solid $dark-gray;
-  padding: 3rem;
-  margin: .5rem;
+  padding: none;
+  margin: 0 auto;
 }
 
 .tutorial-thumbnail-wrapper a {
@@ -106,8 +108,18 @@ Tutorial Index Page Styling
 .tutorial-thumbnail {
   width: 100%;
   height: 100%;
+  //border: 1px solid $dark-gray;
+  min-height: 200px;
+  background-color: $light-grey;
 }
 
+.tutorial-thumbnail:hover {
+  background-color: rgb(250,250,250);
+}
+
+.tutorial-thumbnail h3 {
+  color: $orange;
+}
 /**********************************************************
 New Tutorial Page Styling
 **********************************************************/
