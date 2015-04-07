@@ -18,7 +18,7 @@ feature %(
       click_button "Log in"
     end
 
-    scenario 'User views a tutorial with a review' do
+    pending 'User views a tutorial with a review' do
       review = FactoryGirl.create(:review)
 
       visit tutorial_path(review.tutorial)

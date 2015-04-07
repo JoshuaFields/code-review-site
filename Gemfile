@@ -10,7 +10,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'foundation-rails'
-gem 'acts_as_votable', '~> 0.10.0'
 gem 'kaminari'
 
 group :development, :test do
