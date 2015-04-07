@@ -10,8 +10,9 @@ class Review < ActiveRecord::Base
   }
 
   def score
-    if $redis.exists(id)
-      $redis.zcount(id, 1, 1) - $redis.zcount(id, -1, -1)
+    if Redis.current.exists("review_votes_#{id}")
+      Redis.current.zcount("review_votes_#{id}", 1, 1) -
+        Redis.current.zcount("review_votes_#{id}", -1, -1)
     else
       0
     end

@@ -1,4 +1,8 @@
+require "voting"
+
 class ReviewsController < ApplicationController
+  include Voting
+
   before_action :authenticate_user!
   before_action :authorize_admin!, only: %i(destroy)
 
@@ -23,22 +27,12 @@ class ReviewsController < ApplicationController
   end
 
   def upvote
-    @user = current_user.id
-    if $redis.zscore(params[:id], @user) == 1
-      $redis.zadd(params[:id], 0, @user)
-    else
-      $redis.zadd(params[:id], 1, @user)
-    end
+    send_upvote(params[:id], current_user.id)
     redirect_to tutorial_path(params[:tutorial_id])
   end
 
   def downvote
-    @user = current_user.id
-    if $redis.zscore(params[:id], @user) == -1
-      $redis.zadd(params[:id], 0, @user)
-    else
-      $redis.zadd(params[:id], -1, @user)
-    end
+    send_downvote(params[:id], current_user.id)
     redirect_to tutorial_path(params[:tutorial_id])
   end
 
