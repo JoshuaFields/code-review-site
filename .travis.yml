@@ -3,13 +3,3 @@ rvm:
 - 2.0.0-p576
 before_script:
 - psql -c 'create database code_review_site_test;' -U postgres
-deploy:
-  provider: s3
-  aws_access_key_id: AKIAJVORW6OTERHM3DFQ
-  aws_secret_access_key:
-    secure: RuqecpjHnAOhX9QfbrXm6DMTC5C21ONA4NWG59zuQVcIAtImmdP1FUiU40/tm/SPG2rtYtAkVMXt81U2izIsiyVMy1ZKK5Aj2DiXlSVU8G75kbDGaewz1fpeKaYTsD62fcaxHssLvRPXwbWe774+f4VZbT/RKHxsXBVQvdTgrjE=
-  bucket: code-review-site-development
-  acl: private
-  on:
-    repo: JoshuaFields/code-review-site
-    branch: carrierwave
