@@ -1,5 +1,5 @@
 <div class="row longer-row">
-	<div class="large-2 columns tutorial-index-wrapper">
+	<div class="large-2 columns index-search-wrapper">
 		<h3>Find a Tutorial</h3>
 		<%= form_tag(tutorials_search_path, method: "get") do %>
 			<%= text_field_tag(:search) %>
@@ -21,6 +21,8 @@
 				</li>
 			<% end %>
 		</ul>
-		<%= paginate @tutorials %>
+		<div class="small-8 columns" id="pagination-wrapper">
+			<%= paginate @tutorials %>
+		</div>
 	</div>
 </div>
