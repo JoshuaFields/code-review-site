@@ -8,13 +8,4 @@ class Review < ActiveRecord::Base
   validates :rating, presence: true, numericality: {
     only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5
   }
-
-  def score
-    if Redis.current.exists("review_votes_#{id}")
-      Redis.current.zcount("review_votes_#{id}", 1, 1) -
-        Redis.current.zcount("review_votes_#{id}", -1, -1)
-    else
-      0
-    end
-  end
 end

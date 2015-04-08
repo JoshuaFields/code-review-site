@@ -1,11 +1,11 @@
-require "voting"
+require "Voting"
 
 class ReviewsController < ApplicationController
+  include ScoreHelper
   include Voting
 
   before_action :authenticate_user!
   before_action :authorize_admin!, only: %i(destroy)
-  # respond_to :html, :js
 
   def create
     @tutorial = Tutorial.find(params[:tutorial_id])
@@ -30,17 +30,15 @@ class ReviewsController < ApplicationController
   def upvote
     send_upvote(params[:id], current_user.id)
     respond_to do |format|
-      format.json { render json: Review.find(params[:id]).score }
+      format.json { render json: score(params[:id]) }
     end
-    # redirect_to tutorial_path(params[:tutorial_id])
   end
 
   def downvote
     send_downvote(params[:id], current_user.id)
     respond_to do |format|
-      format.json { render json: Review.find(params[:id]).score }
+      format.json { render json: score(params[:id]) }
     end
-    # redirect_to tutorial_path(params[:tutorial_id])
   end
 
   private
