@@ -1,5 +1,7 @@
 language: ruby
 rvm:
 - 2.0.0-p576
+services:
+  - redis-server
 before_script:
 - psql -c 'create database code_review_site_test;' -U postgres

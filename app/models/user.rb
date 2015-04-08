@@ -7,5 +7,9 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :tutorials
 
+  def self.owner?(current_user, tutorial)
+    tutorial.user == current_user
+  end
+
   mount_uploader :profile_photo, ProfilePhotoUploader
 end
