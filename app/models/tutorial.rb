@@ -10,10 +10,10 @@ class Tutorial < ActiveRecord::Base
   belongs_to :user
   has_many :reviews, dependent: :destroy
   has_many :tutorials_tags
-  has_many :tags, through: :tutorials_tags
+  has_many :tags, through: :tutorials_tags, dependent: :destroy
 
   def all_tags=(names)
-    self.tags = names.split(",").map do |name|
+    self.tags = names.downcase.split(",").map do |name|
       Tag.where(tag_name: name.strip).first_or_create!
     end
   end

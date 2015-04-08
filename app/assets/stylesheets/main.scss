@@ -108,6 +108,11 @@ Tutorial Index Page Styling
   height: 100%;
 }
 
+.index-tag-overflow {
+  max-height: 15rem;
+  overflow: auto;
+}
+
 /**********************************************************
 New Tutorial Page Styling
 **********************************************************/

@@ -5,6 +5,10 @@ class TutorialsController < ApplicationController
   def index
     if params[:tag_name]
       @tutorials = Tutorial.tagged_with(params[:tag_name]).page(params[:page]).per(3)
+    elsif params[:newest]
+      @tutorials = Tutorial.all.order('created_at desc').page(params[:page]).per(3)
+    elsif params[:oldest]
+      @tutorials = Tutorial.all.order('created_at asc').page(params[:page]).per(3)
     else
       @tutorials = Tutorial.all.page(params[:page]).per(3)
     end
