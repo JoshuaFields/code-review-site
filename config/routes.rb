@@ -19,4 +19,6 @@ Rails.application.routes.draw do
 
   root "tutorials#index"
   get "tags/:tag_name", to: "tutorials#index", as: "tag"
+  get "newest/:newest", to: "tutorials#index", as: "newest"
+  get "oldest/:oldest", to: "tutorials#index", as: "oldest"
 end

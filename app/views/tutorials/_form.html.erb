@@ -23,6 +23,7 @@
     ['$$$$: More than $30/month', '$$$$']
     ]), include_blank: 'Select' %>
 
+  <%= t.label :all_tags, "Tags" %>
   <%= t.text_field :all_tags, placeholder: "Tags separated with comma" %>
 
   <%= t.submit "Submit", class: "button radius" %>

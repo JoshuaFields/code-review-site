@@ -1,12 +1,16 @@
 <div class="row longer-row">
 	<div class="large-2 columns tutorial-index-wrapper">
-		<h2>Sorting shit goes here</h2>
+		<h2>Sort By:</h2>
+			<%= link_to "Newest", newest_path(:newest), class: "button small radius" %>
+			<%= link_to "Oldest", oldest_path(:oldest), class: "button small radius" %>
 		<h3>Tags</h3>
+		<div class="index-tag-overflow">
 		<% Tag.all.each do |tag| %>
 			<div class="button tiny radius">
 				<%= raw tag_links(tag.tag_name) %>
 			</div>
 		<% end %>
+		</div>
 		<%= link_to "Add Tutorial", new_tutorial_path, class: "button radius" %>
 	</div>
 	<div class="large-9 columns tutorial-index-wrapper">
