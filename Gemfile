@@ -12,6 +12,8 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'kaminari'
+gem 'carrierwave'
+gem 'fog'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
@@ -24,4 +26,6 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'pry-rails'
   gem 'shoulda-matchers', require: false
+  gem 'dotenv-rails'
+
 end
