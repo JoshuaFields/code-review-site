@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     resources :reviews, only: %i(create destroy)
   end
 
-  root 'tutorials#index'
+  root "tutorials#index"
+  get "tags/:tag_name", to: "tutorials#index", as: "tag"
 end

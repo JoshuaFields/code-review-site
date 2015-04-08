@@ -17,7 +17,7 @@ gem 'fog'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
-  gem 'spring'
+  gem 'spring', '>= 1.3.4'
   gem 'coveralls', require: false
   gem 'rspec-rails'
   gem 'capybara'
