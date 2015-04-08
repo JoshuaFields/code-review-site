@@ -16,12 +16,17 @@ gem 'redis'
 group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'pry-rails'
+  gem 'shoulda-matchers', require: false
   gem 'coveralls', require: false
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
   gem 'factory_girl_rails'
   gem 'valid_attribute'
-  gem 'pry-rails'
-  gem 'shoulda-matchers', require: false
+end
+
+group :test do
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end

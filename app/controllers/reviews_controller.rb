@@ -1,6 +1,7 @@
 require "voting"
 
 class ReviewsController < ApplicationController
+  include ScoreHelper
   include Voting
 
   before_action :authenticate_user!
@@ -28,12 +29,16 @@ class ReviewsController < ApplicationController
 
   def upvote
     send_upvote(params[:id], current_user.id)
-    redirect_to tutorial_path(params[:tutorial_id])
+    respond_to do |format|
+      format.json { render json: score(params[:id]) }
+    end
   end
 
   def downvote
     send_downvote(params[:id], current_user.id)
-    redirect_to tutorial_path(params[:tutorial_id])
+    respond_to do |format|
+      format.json { render json: score(params[:id]) }
+    end
   end
 
   private
