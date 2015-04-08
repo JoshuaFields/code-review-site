@@ -3,7 +3,9 @@ class TutorialsController < ApplicationController
   before_action :authorize_admin!, only: %i(destroy)
 
   def index
-    @tutorials = Tutorial.all.order("created_at DESC").page(params[:page]).per(9)
+    @tutorials = Tutorial.all.order(
+      "created_at DESC"
+    ).page(params[:page]).per(9)
   end
 
   def show
