@@ -10,22 +10,26 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'foundation-rails'
-gem 'acts_as_votable', '~> 0.10.0'
 gem 'kaminari'
+gem 'redis'
 gem 'carrierwave'
 gem 'fog'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'pry-rails'
+  gem 'shoulda-matchers', require: false
   gem 'coveralls', require: false
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
   gem 'factory_girl_rails'
   gem 'valid_attribute'
-  gem 'pry-rails'
-  gem 'shoulda-matchers', require: false
   gem 'dotenv-rails'
+end
 
+group :test do
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end

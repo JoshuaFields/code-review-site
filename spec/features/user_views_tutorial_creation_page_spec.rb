@@ -19,7 +19,7 @@ feature %(
 
     scenario 'click on link button to new tutorial page' do
       visit tutorials_path
-      click_link 'Add Tutorial'
+      click_link 'Add a Tutorial'
       expect(page).to have_content('Add a Tutorial')
     end
   end
@@ -27,7 +27,7 @@ feature %(
   context "user is not signed in" do
     scenario 'click on link button to new tutorial page' do
       visit tutorials_path
-      click_link 'Add Tutorial'
+      click_link 'Add a Tutorial'
       expect(page).to have_no_content('Add a Tutorial')
     end
   end
