@@ -1,4 +1,8 @@
+require "voting"
+
 class ReviewsController < ApplicationController
+  include Voting
+
   before_action :authenticate_user!
   before_action :authorize_admin!, only: %i(destroy)
 
@@ -15,25 +19,21 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def downvote
-    @review = Review.find(params[:id])
-    @review.downvote_by current_user
-    @tutorial = @review.tutorial
-    redirect_to tutorial_path(@tutorial)
-  end
-
-  def upvote
-    @review = Review.find(params[:id])
-    @review.upvote_by current_user
-    @tutorial = @review.tutorial
-    redirect_to tutorial_path(@tutorial)
-  end
-
   def destroy
     @tutorial = Tutorial.find(params[:tutorial_id])
     @review = @tutorial.reviews.find(params[:id])
     @review.destroy
     redirect_to tutorial_path(@tutorial)
+  end
+
+  def upvote
+    send_upvote(params[:id], current_user.id)
+    redirect_to tutorial_path(params[:tutorial_id])
+  end
+
+  def downvote
+    send_downvote(params[:id], current_user.id)
+    redirect_to tutorial_path(params[:tutorial_id])
   end
 
   private
