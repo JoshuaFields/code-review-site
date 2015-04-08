@@ -5,6 +5,7 @@ class ReviewNotifier < ActionMailer::Base
 
     mail(
       to: review.tutorial.user.email,
-      subject: "New Review for #{review.tutorial.title}")
+      subject: "New Review for #{review.tutorial.title}"
+    )
   end
 end
