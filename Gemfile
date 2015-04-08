@@ -12,6 +12,8 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'kaminari'
 gem 'redis'
+gem 'carrierwave'
+gem 'fog'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
@@ -24,6 +26,7 @@ group :development, :test do
   gem 'launchy'
   gem 'factory_girl_rails'
   gem 'valid_attribute'
+  gem 'dotenv-rails'
 end
 
 group :test do

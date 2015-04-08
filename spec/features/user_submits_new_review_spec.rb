@@ -6,7 +6,7 @@ feature %(
   so that others can know my important opinion.
 ) do
   context "user is signed in" do
-    let!(:user) { FactoryGirl.create(:user) }
+    let!(:user) { FactoryGirl.create(:user_with_photo) }
     let!(:tutorial) { FactoryGirl.create(:tutorial, user: user) }
 
     before(:each) do
@@ -27,6 +27,7 @@ feature %(
 
       expect(page).to have_content('This is a totally awesome tutorial!')
       expect(page).to have_content('4')
+      expect(page).to have_xpath("//img[@src=\"#{user.profile_photo}\"]")
     end
   end
 
