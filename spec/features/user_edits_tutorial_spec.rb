@@ -30,7 +30,7 @@ feature %(
 
     scenario "user wants to go back to tutorial index page" do
       visit edit_tutorial_path(tutorial)
-      click_link "Home"
+      click_link "Logo"
       expect(page).to have_content(tutorial.title)
       expect(page).to have_content(second_tutorial.title)
     end
