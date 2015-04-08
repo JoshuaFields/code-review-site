@@ -17,10 +17,8 @@ feature %(
 
     click_button "Log in"
     visit tutorial_path(review.tutorial)
-    unless(tutorial.user = user)
-      expect(page).to_not have_content("Delete Tutorial")
-      expect(page).to_not have_content("Delete Review")
-    end
+    expect(page).to_not have_content("Delete Tutorial")
+    expect(page).to_not have_content("Delete Review")
   end
 
   scenario "Deletes review" do
