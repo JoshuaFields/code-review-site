@@ -18,7 +18,8 @@ feature 'user registers', %(
     fill_in 'Email', with: 'john@example.com'
     fill_in 'Password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
-
+    attach_file('Profile photo',
+      "#{Rails.root}/spec/fixtures/images/Bowser.png")
     click_button 'Sign up'
 
     expect(page).to have_content('Welcome! You have signed up successfully.')
