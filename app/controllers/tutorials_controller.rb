@@ -1,4 +1,7 @@
 class TutorialsController < ApplicationController
+  before_action :authenticate_user!, except: %i(index show search)
+  before_action :authorize_admin!, only: %i(destroy)
+
   def index
     @tutorials = Tutorial.all.page(params[:page]).per(3)
   end
@@ -40,6 +43,12 @@ class TutorialsController < ApplicationController
       flash[:notice] = @tutorial.errors.full_messages.join("! ")
       render :edit
     end
+  end
+
+  def destroy
+    @tutorial = Tutorial.find(params[:id])
+    @tutorial.destroy
+    redirect_to tutorials_path
   end
 
   def search

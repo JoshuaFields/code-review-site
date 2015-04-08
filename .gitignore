@@ -12,4 +12,10 @@
 !/log/.keep
 /tmp
 /coverage
-.env
+
+# Ignore uploaded files in test/development
+/public/uploads
+/spec/support/uploads
+
+# Ignore Special Keys
+/.env

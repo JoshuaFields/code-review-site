@@ -18,10 +18,10 @@ feature %(
     end
 
     scenario "user wants to go back to tutorial index page" do
-      first_tutorial = FactoryGirl.create(:tutorial)
+      tutorial = FactoryGirl.create(:tutorial)
       visit new_tutorial_path
       click_link "Back"
-      expect(page).to have_content(first_tutorial.title)
+      expect(page).to have_content(tutorial.title)
     end
 
     scenario "user creates a new tutorial with valid information" do

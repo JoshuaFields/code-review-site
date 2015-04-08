@@ -1,4 +1,7 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authorize_admin!, only: %i(destroy)
+
   def create
     @tutorial = Tutorial.find(params[:tutorial_id])
     @review = @tutorial.reviews.new(review_params)
@@ -24,6 +27,13 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.upvote_by current_user
     @tutorial = @review.tutorial
+    redirect_to tutorial_path(@tutorial)
+  end
+
+  def destroy
+    @tutorial = Tutorial.find(params[:tutorial_id])
+    @review = @tutorial.reviews.find(params[:id])
+    @review.destroy
     redirect_to tutorial_path(@tutorial)
   end
 

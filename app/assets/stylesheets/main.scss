@@ -14,13 +14,13 @@ $black: #000000;
 /**********************************************************
 General Styling
 **********************************************************/
-body {
+/* body {
   background: url("review-background.jpg") center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
+} */
 
 .button {
   background-color: $dark-gray;
@@ -146,4 +146,9 @@ Show Tutorial Page Styling
 
 .downvote-img {
   display: block;
+}
+
+.review-image {
+  height: 50px;
+  width: 50px;
 }
