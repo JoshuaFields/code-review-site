@@ -3,7 +3,11 @@ class TutorialsController < ApplicationController
   before_action :authorize_admin!, only: %i(destroy)
 
   def index
-    @tutorials = Tutorial.all.page(params[:page]).per(3)
+    if params[:tag_name]
+      @tutorials = Tutorial.tagged_with(params[:tag_name]).page(params[:page]).per(3)
+    else
+      @tutorials = Tutorial.all.page(params[:page]).per(3)
+    end
   end
 
   def show
@@ -61,7 +65,7 @@ class TutorialsController < ApplicationController
 
   def tutorial_params
     params.require(:tutorial).permit(
-      :title, :url, :language, :description, :organization, :cost
+      :title, :url, :language, :description, :organization, :cost, :all_tags
     )
   end
 end
