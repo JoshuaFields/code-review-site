@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :authorize_admin!, only: %i(destroy)
+  # respond_to :html, :js
 
   def create
     @tutorial = Tutorial.find(params[:tutorial_id])
@@ -28,12 +29,18 @@ class ReviewsController < ApplicationController
 
   def upvote
     send_upvote(params[:id], current_user.id)
-    redirect_to tutorial_path(params[:tutorial_id])
+    respond_to do |format|
+      format.json { render json: Review.find(params[:id]).score }
+    end
+    # redirect_to tutorial_path(params[:tutorial_id])
   end
 
   def downvote
     send_downvote(params[:id], current_user.id)
-    redirect_to tutorial_path(params[:tutorial_id])
+    respond_to do |format|
+      format.json { render json: Review.find(params[:id]).score }
+    end
+    # redirect_to tutorial_path(params[:tutorial_id])
   end
 
   private

@@ -52,9 +52,9 @@
     <% @tutorial.reviews.each do |review| %>
       <% if review.id %>
         <div class="small-1 column">
-          <%= link_to "upvote", upvote_path(@tutorial, review), method: :put, class: "upvote-img"%>
-          <h6 class="vote-score"><%= review.score %></h6>
-          <%= link_to "downvote", downvote_path(@tutorial, review), method: :put, class: "downvote-img" %>
+          <%= link_to "upvote", '#', class: "upvote-img", reviewID: "#{review.id}", path: "#{upvote_path(@tutorial, review)}" %>
+          <h6 class="vote-score" id="<%= review.id %>"><%= review.score %></h6>
+          <%= link_to "downvote", '#', class: "downvote-img", reviewID: "#{review.id}", path: "#{downvote_path(@tutorial, review)}" %>
         </div>
         <div class="row review-wrapper">
           <div class="small-11 column">
