@@ -16,9 +16,7 @@ feature %(
     fill_in "Password", with: user.password
 
     click_button "Log in"
-
     visit tutorial_path(review.tutorial)
-
     expect(page).to_not have_content("Delete Tutorial")
     expect(page).to_not have_content("Delete Review")
   end

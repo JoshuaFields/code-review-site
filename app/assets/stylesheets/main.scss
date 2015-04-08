@@ -1,10 +1,16 @@
 /* Color Definitions */
 $dark-gray: #2e2e2e;
 $dark-gray-hover: #262626;
-$opaque-white: rgba(255, 255, 255, 0.65);
-$flash-color: #962424;
+$opaque-white: rgba(255, 255, 255, 0.8);
+$white: #fff;
 $black: #000000;
+$light-gray: #ecebe8;
+$orange: rgb(214, 71, 31);
+$old-flash-color: #962424;
+$flash-color: $orange;
+$blue: rgb(0, 145, 208);
 
+$border-radius: 5px;
 /*
 @font-face {
   font-family: 'Terminal';
@@ -14,13 +20,14 @@ $black: #000000;
 /**********************************************************
 General Styling
 **********************************************************/
-/* body {
-  background: url("review-background.jpg") center;
+
+body {
+  background: url("binary-background.jpg") center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-} */
+}
 
 .button {
   background-color: $dark-gray;
@@ -85,17 +92,21 @@ Devise Styling
 /**********************************************************
 Tutorial Index Page Styling
 **********************************************************/
+.index-search-wrapper {
+  margin: 5rem 0;
+  //border: 1px solid $dark-gray;
+  background-color: $opaque-white;
+  //position: fixed;
+}
+
+
 .tutorial-index-wrapper {
   margin: 5rem 0;
-  background-color: $opaque-white;
-  border: 1px solid $dark-gray;
 }
 
 .tutorial-thumbnail-wrapper {
-  background-color: $opaque-white;
-  border: 1px solid $dark-gray;
-  padding: 3rem;
-  margin: .5rem;
+  margin: 0 auto;
+  padding: none;
 }
 
 .tutorial-thumbnail-wrapper a {
@@ -106,8 +117,32 @@ Tutorial Index Page Styling
 .tutorial-thumbnail {
   width: 100%;
   height: 100%;
+  //border: 1px solid $dark-gray;
+  min-height: 500px;
+  background-color: $opaque-white;
+  border-radius: $border-radius;
 }
 
+.tutorial-thumbnail:hover {
+  background-color: $white;
+}
+
+.tutorial-thumbnail h3 {
+  color: $orange;
+}
+
+#pagination-wrapper {
+  margin-left: 12rem;
+  text-align: center;
+}
+
+.pagination {
+  background-color: $opaque-white;
+}
+
+.pagination span {
+  font-size: 1.7rem;
+}
 /**********************************************************
 New Tutorial Page Styling
 **********************************************************/
@@ -146,6 +181,14 @@ Show Tutorial Page Styling
 
 .downvote-img {
   display: block;
+}
+
+
+/**********************************************************
+Edit Tutorial Page Styling
+**********************************************************/
+#edit-wrapper {
+  margin-top: 4em;
 }
 
 .review-image {

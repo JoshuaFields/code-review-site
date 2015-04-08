@@ -28,13 +28,6 @@ feature %(
       expect(page).to have_field("Description", with: tutorial.description)
     end
 
-    scenario "user wants to go back to tutorial index page" do
-      visit edit_tutorial_path(tutorial)
-      click_link "Home"
-      expect(page).to have_content(tutorial.title)
-      expect(page).to have_content(second_tutorial.title)
-    end
-
     scenario "user wants to go back to tutorial show page" do
       visit edit_tutorial_path(tutorial)
       click_link "Back"
