@@ -1,4 +1,3 @@
-<%#= link_to "Back", tutorials_path, class: "button radius", id:"tutorial-back-button" %>
 <div class="row">
   <div class="small-12 column show-tutorial-wrapper">
     <%= link_to "Back", tutorials_path, class: "button radius", id:"tutorial-back-button" %>
@@ -38,10 +37,10 @@
       </p>
     <% end %>
   </div>
-  <% if User.is_owner?(current_user, @tutorial) %>
+  <% if User.owner?(current_user, @tutorial) %>
     <%= link_to 'Edit Tutorial', edit_tutorial_path(@tutorial), class: "button tiny" %>
   <% end %>
-  <% if current_user.try(:admin?) || User.is_owner?(current_user, @tutorial) %>
+  <% if current_user.try(:admin?) || User.owner?(current_user, @tutorial) %>
     <%= link_to "Delete Tutorial", tutorial_path(@tutorial),
      method: :delete, class: "button tiny" %>
   <% end %>
