@@ -29,6 +29,14 @@ feature %(
       click_on("upvote")
 
       expect(page).to have_content("upvote 1 downvote")
+
+      click_on("upvote")
+
+      expect(page).to have_content("upvote 0 downvote")
+
+      click_on("downvote")
+
+      expect(page).to have_content("upvote -1 downvote")
     end
   end
 end
