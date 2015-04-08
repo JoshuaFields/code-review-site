@@ -3,7 +3,7 @@ $(document).ready(function () {
         var path = $(this).attr('path');
         var reviewID = $(this).attr('reviewID');
         $.post(path, function (data) {
-            $("#" + reviewID).text(data);
+            $("#review-" + reviewID).text(data);
         });
     });
 });

@@ -52,12 +52,12 @@
       <% if review.id %>
         <div class="small-1 column">
           <%= link_to "upvote", '#', class: "upvote-img", reviewID: "#{review.id}", path: "#{upvote_path(review)}" %>
-          <h6 class="vote-score" id="<%= review.id %>"><%= score(review.id) %></h6>
+          <h6 class="vote-score" id="review-<%= review.id %>"><%= score(review.id) %></h6>
           <%= link_to "downvote", '#', class: "downvote-img", reviewID: "#{review.id}", path: "#{downvote_path(review)}" %>
         </div>
         <div class="row review-wrapper">
           <div class="small-11 column">
-            <span class="stars-holder" id='<%= "#{review.id}" %>'><%= "#{review.rating}" %></span>
+            <span class="stars-holder" id='review-stars-<%= review.id %>'><%= "#{review.rating}" %></span>
             <p><%= review.body %></p>
           </div>
           <% if current_user.try(:admin?) %>
