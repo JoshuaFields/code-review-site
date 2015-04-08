@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
-  def self.owner?(current_user, tutorial)
-    tutorial.user = current_user
+  def owner?(tutorial)
+    tutorial.user == current_user
   end
 end
