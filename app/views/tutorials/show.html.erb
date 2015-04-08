@@ -37,10 +37,10 @@
       </p>
     <% end %>
   </div>
-  <% if User.is_owner?(current_user, @tutorial) %>
+  <% if User.owner?(current_user, @tutorial) %>
     <%= link_to 'Edit Tutorial', edit_tutorial_path(@tutorial), class: "button tiny" %>
   <% end %>
-  <% if current_user.try(:admin?) || User.is_owner?(current_user, @tutorial) %>
+  <% if current_user.try(:admin?) || User.owner?(current_user, @tutorial) %>
     <%= link_to "Delete Tutorial", tutorial_path(@tutorial),
      method: :delete, class: "button tiny" %>
   <% end %>
@@ -58,7 +58,7 @@
         <div class="row review-wrapper">
           <div class="small-11 column">
             <span class="stars-holder" id='review-stars-<%= review.id %>'><%= "#{review.rating}" %></span>
-            <div class="small-1 column">
+            <div class="small-12 column">
               <div class="review-image">
                 <%= image_tag(review.user.profile_photo.url) %> <br>
               </div>

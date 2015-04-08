@@ -7,8 +7,7 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :tutorials
 
-
-  def self.is_owner?(current_user, tutorial)
+  def self.owner?(current_user, tutorial)
     tutorial.user == current_user
   end
 
