@@ -3,20 +3,11 @@ $dark-gray: #2e2e2e;
 $dark-gray-hover: #262626;
 $opaque-white: rgba(255, 255, 255, 0.8);
 $white: #fff;
-$black: #000000;
-$light-gray: #ECEBE8;
-$orange: rgb(214,71,31);
-$old-flash-color: #962424;
+$orange: rgb(214, 71, 31);
 $flash-color: $orange;
-$blue: rgb(0, 145, 208);
 
 $border-radius: 5px;
-/*
-@font-face {
-  font-family: 'Terminal';
-  src: url('terminal.ttf') format('truetype');
-}
-*/
+
 /**********************************************************
 General Styling
 **********************************************************/
@@ -94,9 +85,7 @@ Tutorial Index Page Styling
 **********************************************************/
 .index-search-wrapper {
   margin: 5rem 0;
-  //border: 1px solid $dark-gray;
   background-color: $opaque-white;
-  //position: fixed;
 }
 
 
@@ -105,8 +94,8 @@ Tutorial Index Page Styling
 }
 
 .tutorial-thumbnail-wrapper {
-  padding: none;
   margin: 0 auto;
+  padding: none;
 }
 
 .tutorial-thumbnail-wrapper a {
@@ -117,7 +106,6 @@ Tutorial Index Page Styling
 .tutorial-thumbnail {
   width: 100%;
   height: 100%;
-  //border: 1px solid $dark-gray;
   min-height: 500px;
   background-color: $opaque-white;
   border-radius: $border-radius;
