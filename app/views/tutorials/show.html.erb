@@ -1,10 +1,6 @@
-<% if current_user == @tutorial.user %>
-  <%= link_to 'Edit', edit_tutorial_path(@tutorial) %>
-<% end %>
-
-<%= link_to "Back", tutorials_path, class: "button radius", id:"tutorial-back-button" %>
 <div class="row">
   <div class="small-12 column show-tutorial-wrapper">
+    <%= link_to "Back", tutorials_path, class: "button radius", id:"tutorial-back-button" %>
     <p>
       <strong>Title:</strong>
       <%= @tutorial.title %>
@@ -41,11 +37,12 @@
       </p>
     <% end %>
   </div>
-  <% if current_user.try(:admin?) %>
-    <div class="small-12 column">
-      <%= link_to "Delete Tutorial", tutorial_path(@tutorial),
-        method: :delete, class: "button tiny" %>
-    </div>
+  <% if User.is_owner?(current_user, @tutorial) %>
+    <%= link_to 'Edit Tutorial', edit_tutorial_path(@tutorial), class: "button tiny" %>
+  <% end %>
+  <% if current_user.try(:admin?) || User.is_owner?(current_user, @tutorial) %>
+    <%= link_to "Delete Tutorial", tutorial_path(@tutorial),
+     method: :delete, class: "button tiny" %>
   <% end %>
 </div>
 
@@ -54,9 +51,9 @@
     <% @tutorial.reviews.each do |review| %>
       <% if review.id %>
         <div class="small-1 column">
-          <%= link_to "upvote", upvote_path(@tutorial, review), method: :put, class: "upvote-img"%>
-          <h6 class="vote-score"><%= review.score %></h6>
-          <%= link_to "downvote", downvote_path(@tutorial, review), method: :put, class: "downvote-img" %>
+          <%= link_to "upvote", '#', class: "upvote-img", reviewID: "#{review.id}", path: "#{upvote_path(review)}" %>
+          <h6 class="vote-score" id="<%= review.id %>"><%= score(review.id) %></h6>
+          <%= link_to "downvote", '#', class: "downvote-img", reviewID: "#{review.id}", path: "#{downvote_path(review)}" %>
         </div>
         <div class="row review-wrapper">
           <div class="small-11 column">

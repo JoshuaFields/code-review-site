@@ -1,20 +1,28 @@
 <div class="row longer-row">
-	<div class="large-2 columns tutorial-index-wrapper">
-		<h2>Sorting shit goes here</h2>
-		<%= link_to "Add Tutorial", new_tutorial_path, class: "button radius" %>
+	<div class="large-2 columns index-search-wrapper">
+		<h3>Find a Tutorial</h3>
+		<%= form_tag(tutorials_search_path, method: "get") do %>
+			<%= text_field_tag(:search) %>
+			<%= submit_tag("Search", class: "button tiny") %>
+		<% end %>
+		<h3>Order Tutorials By: </h3>
+		<h3>Or: </h3>
+		<%= link_to "Add a Tutorial", new_tutorial_path, class: "button radius" %>
 	</div>
-	<div class="large-9 columns tutorial-index-wrapper">
+	<div class="large-10 columns tutorial-index-wrapper">
 		<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
 			<% @tutorials.each do |tutorial| %>
 				<li class="tutorial-thumbnail-wrapper">
 					<%= link_to tutorial do %>
 						<div class="tutorial-thumbnail">
-							<%= tutorial.title %>
+							<h3><%= tutorial.title %><h3>
 						</div>
 					<% end %>
 				</li>
 			<% end %>
 		</ul>
-		<%= paginate @tutorials %>
+		<div class="small-8 columns" id="pagination-wrapper">
+			<%= paginate @tutorials %>
+		</div>
 	</div>
 </div>
