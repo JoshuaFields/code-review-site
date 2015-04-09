@@ -17,7 +17,6 @@ gem 'fog'
 
 group :production do
   gem 'rails_12factor'
-  gem 'jquery-turbolinks'
 end
 
 group :development, :test do
