@@ -30,6 +30,12 @@ RSpec.describe Tutorial, type: :model do
     expect(tutorial.all_tags).to eq("ruby, html")
   end
 
+  it "should add to database" do
+    tutorial = FactoryGirl.create(:tutorial)
+    tutorial.all_tags=("assandra")
+    Tag.where(tag_name: "assandra").should exist
+  end
+
   it "should return tutorials with tag name" do
     tutorial = FactoryGirl.create(:tutorial, all_tags: "ruby, html")
     expect(Tutorial.tagged_with("ruby")[0][:title]).to eq tutorial.title
