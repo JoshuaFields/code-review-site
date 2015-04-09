@@ -11,4 +11,9 @@ Rails.application.routes.draw do
   resources :tutorials, only: %i(index show new create edit update destroy) do
     resources :reviews, only: %i(index create destroy)
   end
+  
+  root "tutorials#index"
+  get "tags/:tag_name", to: "tutorials#index", as: "tag"
+  get "newest/:newest", to: "tutorials#index", as: "newest"
+  get "oldest/:oldest", to: "tutorials#index", as: "oldest"
 end
