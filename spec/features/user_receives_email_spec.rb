@@ -1,6 +1,8 @@
 require 'rails_helper'
-feature %(As a user i should receive an email when someone
-  reviews my tutorial.
+feature %(
+  As a user,
+  I should receive an email when someone reviews my tutorial,
+  so that I can politely respond.
 ) do
   before(:each) do
     user = FactoryGirl.create(:user)
