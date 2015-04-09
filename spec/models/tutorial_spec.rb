@@ -37,7 +37,7 @@ describe "#all_tags=(names)" do
   it "should add to database" do
     tutorial = FactoryGirl.create(:tutorial)
     tutorial.all_tags=("assandra")
-    Tag.where(tag_name: "assandra").should exist
+    expect(Tag.where(tag_name: "assandra")).to exist
   end
 end
 
