@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+// $( document ).ready(function() {
   function populateStars() {
     $( ".stars-holder" ).each(function() {
       var val = parseFloat($(this).html());
@@ -12,4 +12,4 @@ $( document ).ready(function() {
   }
 
   populateStars();
-});
+// });
