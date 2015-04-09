@@ -1,4 +1,3 @@
-alert("javascript included");
 $( document ).ready(function() {
   function populateStars() {
     $( ".stars-holder" ).each(function() {
