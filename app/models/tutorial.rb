@@ -19,7 +19,7 @@ class Tutorial < ActiveRecord::Base
   end
 
   def all_tags
-    self.tags.map(&:tag_name).join(", ")
+    tags.map(&:tag_name).join(", ")
   end
 
   def self.tagged_with(tag_name)
