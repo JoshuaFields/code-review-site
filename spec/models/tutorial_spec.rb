@@ -34,10 +34,10 @@ describe "#all_tags" do
 end
 
 describe "#all_tags=(names)" do
-    it "should add to database" do
-      tutorial = FactoryGirl.create(:tutorial)
-      tutorial.all_tags=("assandra")
-      Tag.where(tag_name: "assandra").should exist
+  it "should add to database" do
+    tutorial = FactoryGirl.create(:tutorial)
+    tutorial.all_tags=("assandra")
+    Tag.where(tag_name: "assandra").should exist
   end
 end
 
