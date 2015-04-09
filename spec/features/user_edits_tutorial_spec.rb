@@ -9,6 +9,7 @@ feature %(
     let!(:user) { FactoryGirl.create(:user) }
     let!(:tutorial) { FactoryGirl.create(:tutorial, user: user) }
     let!(:second_tutorial) { FactoryGirl.create(:tutorial, user: user) }
+    let!(:third_tutorial) { FactoryGirl.create(:tutorial) }
 
     before(:each) do
       visit new_user_session_path
@@ -72,6 +73,12 @@ feature %(
       click_button "Submit"
 
       expect(page).to have_content("Url can't be blank")
+    end
+
+    scenario "user tries to edit a different user's tutorial" do
+      visit edit_tutorial_path(third_tutorial)
+      expect(page).to have_content("You can only edit your own tutorials!")
+      expect(current_path).to eq tutorials_path
     end
   end
 
