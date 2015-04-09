@@ -15,6 +15,7 @@ describe UsersController, type: :controller do
     sign_in user
     get(:index)
     expect(response.code).to eq "302"
+    expect(response.body).to include tutorials_path
     expect(flash[:notice]).to eq "This page requires admin privileges!"
   end
 end
