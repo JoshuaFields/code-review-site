@@ -1,4 +1,5 @@
-$( document ).on("page:load", function() {
+alert("javascript included");
+$( document ).ready(function() {
   function populateStars() {
     $( ".stars-holder" ).each(function() {
       var val = parseFloat($(this).html());
