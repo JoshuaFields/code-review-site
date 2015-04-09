@@ -42,9 +42,3 @@ RSpec.describe Tutorial, type: :model do
   end
 
 end
-
-# describe Tutorial do
-#   it "should have all tags" do
-#     self.all_tags=("ruby, html").should == "ruby, html"
-#   end
-# end
