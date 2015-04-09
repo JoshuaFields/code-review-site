@@ -36,10 +36,10 @@ feature %(
 
       click_button "Add Review"
 
-      expect(page).to have_content(
-        "Body is too short (minimum is 3 characters)! Rating can't be blank! " \
-        "Rating is not a number"
-      )
+      expect(page).to have_content "Body is too short (minimum is 3 characters)"
+      expect(page).to have_content "! "
+      expect(page).to have_content "Rating can't be blank"
+      expect(page).to have_content "Rating is not a number"
     end
 
     scenario 'Submits a new review with excessive body length' do
