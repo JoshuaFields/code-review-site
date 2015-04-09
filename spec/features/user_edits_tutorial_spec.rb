@@ -26,6 +26,7 @@ feature %(
       # expect(page).to have_select("Cost", selected: tutorial.cost)
       expect(page).to have_field("Language", with: tutorial.language)
       expect(page).to have_field("Description", with: tutorial.description)
+      expect(page).to have_field("Tags", with: tutorial.all_tags)
     end
 
     scenario "user wants to go back to tutorial index page" do
@@ -50,6 +51,7 @@ feature %(
       fill_in "Language", with: "Ruby"
       fill_in "Description", with: "Y'all should really check this out."
       fill_in "Organization", with: "Code School"
+      fill_in "Tags", with: "Ruby"
       select "Free", from: "Cost"
 
       click_button "Submit"
@@ -64,6 +66,7 @@ feature %(
       fill_in "Url", with: nil
       fill_in "Description", with: "Y'all should really check this out."
       fill_in "Organization", with: "Code School"
+      fill_in "Tags", with: "Ruby"
       select "Free", from: "Cost"
 
       click_button "Submit"

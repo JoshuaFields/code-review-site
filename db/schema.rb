@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 20150408141001) do
   add_index "tutorials", ["user_id"], name: "index_tutorials_on_user_id", using: :btree
 
   create_table "tutorials_tags", force: :cascade do |t|
-    t.integer  "tutorial_id"
-    t.integer  "tag_id"
+    t.integer  "tutorial_id", null: false
+    t.integer  "tag_id",      null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

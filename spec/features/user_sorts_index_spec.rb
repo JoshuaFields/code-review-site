@@ -8,9 +8,12 @@ feature %(
 
   scenario "user sorts index page by clicking on a tag" do
     tutorial = FactoryGirl.create(:tutorial)
+    tutorial_no_tag = FactoryGirl.create(:tutorial, all_tags: "")
+
     visit tutorials_path
     click_link "ruby"
     expect(page).to have_content(tutorial.title)
+    expect(page).to_not have_content(tutorial_no_tag.title)
   end
 
   scenario "user sorts index page by clicking on newest" do

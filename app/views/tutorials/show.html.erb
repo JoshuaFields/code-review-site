@@ -35,7 +35,7 @@
         <strong>Tags:</strong>
         <% @tutorial.tags.each do |tag| %>
           <div class="button tiny radius">
-            <%= raw tag_links(tag.tag_name) %>
+            <%= link_to(tag.tag_name, tag_path(tag.tag_name)) %>
           </div>
         <% end %>
       </p>
