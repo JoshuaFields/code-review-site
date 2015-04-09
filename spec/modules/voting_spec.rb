@@ -1,6 +1,4 @@
 require "rails_helper"
-require "voting"
-require "score_helper"
 include Voting
 include ScoreHelper
 
