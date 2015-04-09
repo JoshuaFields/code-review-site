@@ -1,10 +1,5 @@
 module ScoreHelper
   def score(id)
-    if REDIS.exists("review_votes_#{id}")
-      REDIS.zcount("review_votes_#{id}", 1, 1) -
-        REDIS.zcount("review_votes_#{id}", -1, -1)
-    else
-      0
-    end
+    REDIS.exists("review_score_#{id}") ? REDIS.get("review_score_#{id}") : "0"
   end
 end
