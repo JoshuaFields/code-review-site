@@ -1,4 +1,4 @@
-$(document).ready(function () {
+// $(document).ready(function () {
     $(".upvote-img, .downvote-img").click(function () {
         var path = $(this).attr("path");
         var reviewID = $(this).attr("reviewID");
@@ -7,4 +7,4 @@ $(document).ready(function () {
         });
         return false;
     });
-});
+// });
