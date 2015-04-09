@@ -28,6 +28,17 @@
         <strong>Cost:</strong>
         <%= @tutorial.cost %>
       </p>
+	  <% end %>
+
+    <% unless @tutorial.tags.empty? %>
+      <p>
+        <strong>Tags:</strong>
+        <% @tutorial.tags.each do |tag| %>
+          <div class="button tiny radius">
+            <%= link_to(tag.tag_name, tag_path(tag.tag_name)) %>
+          </div>
+        <% end %>
+      </p>
     <% end %>
 
     <% unless @tutorial.description.empty? %>

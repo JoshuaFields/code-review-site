@@ -6,6 +6,7 @@ FactoryGirl.define do
     description "A tutorial"
     organization "Code School?"
     cost "$"
+    all_tags "ruby"
     user
   end
 end

@@ -131,6 +131,12 @@ Tutorial Index Page Styling
 .pagination span {
   font-size: 1.7rem;
 }
+
+.index-tag-overflow {
+  max-height: 15rem;
+  overflow: auto;
+}
+
 /**********************************************************
 New Tutorial Page Styling
 **********************************************************/

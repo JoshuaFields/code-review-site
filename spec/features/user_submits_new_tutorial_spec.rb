@@ -34,10 +34,12 @@ feature %(
       fill_in "Description", with: "Y'all should really check this out."
       fill_in "Organization", with: "Code School"
       select "Free", from: "Cost"
+      fill_in "Tags", with: "Ruby"
 
       click_button "Submit"
 
       expect(page).to have_content("A Sweet Rails Tutorial")
+      expect(page).to have_link("ruby")
     end
 
     scenario 'user tries to create a new tutorial with missing information' do
