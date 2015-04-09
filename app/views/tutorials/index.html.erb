@@ -1,10 +1,10 @@
 <div class="row longer-row">
-  <div class="large-2 columns tutorial-index-wrapper">
+  <div class="large-2 columns index-search-wrapper">
     <%= form_tag(tutorials_search_path, method: "get") do %>
       <%= text_field_tag(:search) %>
       <%= submit_tag("Search", class: "button tiny") %>
     <% end %>
-  <h2>Sort By:</h2>
+  <h3>Sort By:</h3>
       <%= link_to "Newest", newest_path(:newest), class: "button small radius" %>
       <%= link_to "Oldest", oldest_path(:oldest), class: "button small radius" %>
     <h3>Tags</h3>
@@ -23,7 +23,13 @@
         <li class="tutorial-thumbnail-wrapper">
           <%= link_to tutorial do %>
             <div class="tutorial-thumbnail">
-              <%= tutorial.title %>
+              <h1><%= tutorial.title %></h1>
+              <span class="stars-holder index-stars" id='review-stars-<%= tutorial.id %>'><%= "#{tutorial.avg_rating}" %></span>
+              <% tutorial.tags.each do |tag| %>
+                <div class="button tiny radius">
+                  <%= tag.tag_name %>
+                </div>
+              <% end %>
             </div>
           <% end %>
         </li>

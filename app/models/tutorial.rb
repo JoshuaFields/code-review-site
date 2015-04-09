@@ -25,4 +25,20 @@ class Tutorial < ActiveRecord::Base
   def self.tagged_with(tag_name)
     Tag.find_by_tag_name!(tag_name).tutorials
   end
+
+  def avg_rating
+    sum = 0
+    count = 0
+
+    self.reviews.each do |review|
+      sum += review.rating
+      count += 1
+    end
+    if count == 0
+      return nil
+    else
+      sum.to_f / count
+    end
+  end
+
 end
