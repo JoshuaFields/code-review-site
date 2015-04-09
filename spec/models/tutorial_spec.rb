@@ -24,21 +24,26 @@ RSpec.describe Tutorial, type: :model do
   it { should validate_length_of :description }
 
   it { should validate_inclusion_of(:cost).in_array(%w(Free $ $$ $$$ $$$$)) }
+end
 
+describe "#all_tags" do
   it "should have all tags" do
     tutorial = FactoryGirl.create(:tutorial, all_tags: "ruby, html")
     expect(tutorial.all_tags).to eq("ruby, html")
   end
+end
 
-  it "should add to database" do
-    tutorial = FactoryGirl.create(:tutorial)
-    tutorial.all_tags=("assandra")
-    Tag.where(tag_name: "assandra").should exist
+describe "#all_tags=(names)" do
+    it "should add to database" do
+      tutorial = FactoryGirl.create(:tutorial)
+      tutorial.all_tags=("assandra")
+      Tag.where(tag_name: "assandra").should exist
   end
+end
 
+describe "#tagged_with" do
   it "should return tutorials with tag name" do
     tutorial = FactoryGirl.create(:tutorial, all_tags: "ruby, html")
     expect(Tutorial.tagged_with("ruby")[0][:title]).to eq tutorial.title
   end
-
 end
