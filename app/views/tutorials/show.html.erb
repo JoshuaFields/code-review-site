@@ -1,53 +1,33 @@
 <div class="row">
+  <%= link_to "Back", tutorials_path, class: "button radius", id:"tutorial-back-button" %>
   <div class="small-12 column show-tutorial-wrapper">
-    <%= link_to "Back", tutorials_path, class: "button radius", id:"tutorial-back-button" %>
-    <p>
-      <strong>Title:</strong>
-      <%= @tutorial.title %>
-    </p>
-
-    <p>
-      <strong>URL:</strong>
-      <%= @tutorial.url %>
-    </p>
-
-    <p>
-      <strong>Language:</strong>
-      <%= @tutorial.language %>
-    </p>
-
+      <h5><b>Title:</b> <%= @tutorial.title %></h5>
+      <h5><b>URL:</b> <%= @tutorial.url %></h5>
+      <h5><b>Language:</b> <%= @tutorial.language %></h5>
     <% unless @tutorial.organization.empty? %>
-      <p>
-        <strong>Organization:</strong>
-        <%= @tutorial.organization %>
-      </p>
+        <h5><b>Organization:</b> <%= @tutorial.organization %></h5>
     <% end %>
-
     <% unless @tutorial.cost.empty? %>
-      <p>
-        <strong>Cost:</strong>
-        <%= @tutorial.cost %>
-      </p>
+        <h5><b>Cost:</b> <%= @tutorial.cost %></h5>
 	  <% end %>
-
+    <% unless @tutorial.avg_rating == nil %>
+    <h5><b>Average Rating:</b> <span class="stars-holder" id='review-stars-<%= @tutorial.id %>'><%= "#{@tutorial.avg_rating}" %></span></h5>
+    <% end %>
     <% unless @tutorial.tags.empty? %>
-      <p>
-        <strong>Tags:</strong>
+        <h5><b>Tags:</b>
         <% @tutorial.tags.each do |tag| %>
           <div class="button tiny radius">
             <%= link_to(tag.tag_name, tag_path(tag.tag_name)) %>
           </div>
         <% end %>
-      </p>
+      </h5>
     <% end %>
-
     <% unless @tutorial.description.empty? %>
-      <p>
-        <strong>Description:</strong>
-        <%= @tutorial.description %>
-      </p>
+        <h5><b>Description:</b> <%= @tutorial.description %></h5>
     <% end %>
   </div>
+</div>
+<div class="row">
   <% if User.owner?(current_user, @tutorial) %>
     <%= link_to 'Edit Tutorial', edit_tutorial_path(@tutorial), class: "button tiny" %>
   <% end %>
