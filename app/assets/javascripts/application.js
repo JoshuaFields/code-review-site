@@ -14,7 +14,5 @@
 //= require jquery_ujs
 //= require foundation
 //= require_tree .
-//= require stars
-//= require voting
 
 $(function(){ $(document).foundation(); });
