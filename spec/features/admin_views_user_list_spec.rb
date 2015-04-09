@@ -17,6 +17,7 @@ feature %(
 
     click_link "Users List"
     expect(page).to have_content(user.email)
+    expect(current_path).to eq users_path
   end
 
   scenario "not an admin" do
@@ -31,6 +32,6 @@ feature %(
     visit users_path
 
     expect(page).to have_content("This page requires admin privileges!")
-    expect(page).to_not have_content(admin.email)
+    expect(current_path).to eq tutorials_path
   end
 end
