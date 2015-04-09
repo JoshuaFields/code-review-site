@@ -1,17 +1,25 @@
 module Voting
   def send_upvote(review_id, user_id)
-    if Redis.current.zscore("review_votes_#{review_id}", user_id) == 1
-      Redis.current.zadd("review_votes_#{review_id}", 0, user_id)
-    else
-      Redis.current.zadd("review_votes_#{review_id}", 1, user_id)
+    unless REDIS.srem("review_upvotes_#{review_id}", user_id)
+      REDIS.sadd("review_upvotes_#{review_id}", user_id)
+      REDIS.srem("review_downvotes_#{review_id}", user_id)
     end
+
+    REDIS.set(
+      "review_score_#{review_id}", REDIS.scard("review_upvotes_#{review_id}") -
+      REDIS.scard("review_downvotes_#{review_id}")
+    )
   end
 
   def send_downvote(review_id, user_id)
-    if Redis.current.zscore("review_votes_#{review_id}", user_id) == -1
-      Redis.current.zadd("review_votes_#{review_id}", 0, user_id)
-    else
-      Redis.current.zadd("review_votes_#{review_id}", -1, user_id)
+    unless REDIS.srem("review_downvotes_#{review_id}", user_id)
+      REDIS.sadd("review_downvotes_#{review_id}", user_id)
+      REDIS.srem("review_upvotes_#{review_id}", user_id)
     end
+
+    REDIS.set(
+      "review_score_#{review_id}", REDIS.scard("review_upvotes_#{review_id}") -
+      REDIS.scard("review_downvotes_#{review_id}")
+    )
   end
 end
