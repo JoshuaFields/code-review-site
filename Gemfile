@@ -15,6 +15,10 @@ gem 'redis'
 gem 'carrierwave'
 gem 'fog'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
