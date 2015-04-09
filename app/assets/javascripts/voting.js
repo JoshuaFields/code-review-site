@@ -5,5 +5,6 @@ $(document).ready(function () {
         $.post(path, function (data) {
             $("#review-" + reviewID).text(data);
         });
+        return false;
     });
 });

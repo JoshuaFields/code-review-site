@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     if @review.save
       flash[:notice] = "Review Added."
+      ReviewNotifier.new_review(@review).deliver_later
       redirect_to tutorial_path(@tutorial)
     else
       flash[:notice] = @review.errors.full_messages.join("! ")
