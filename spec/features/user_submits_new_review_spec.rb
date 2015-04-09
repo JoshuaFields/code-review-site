@@ -29,6 +29,30 @@ feature %(
       expect(page).to have_content('4')
       expect(page).to have_xpath("//img[@src=\"#{user.profile_photo}\"]")
     end
+
+    scenario 'Submits a new review with missing info' do
+      visit tutorial_path(tutorial.id)
+      fill_in 'Body', with: 'Th'
+
+      click_button "Add Review"
+
+      expect(page).to have_content(
+        "Body is too short (minimum is 3 characters)! Rating can't be blank! " \
+        "Rating is not a number"
+      )
+    end
+
+    scenario 'Submits a new review with excessive body length' do
+      visit tutorial_path(tutorial.id)
+      select '4', from: 'Rating'
+      fill_in 'Body', with: 'Th' * 10_000
+
+      click_button "Add Review"
+
+      expect(page).to have_content(
+        "Body is too long (maximum is 8191 characters)"
+      )
+    end
   end
 
   context "user is not signed in" do
