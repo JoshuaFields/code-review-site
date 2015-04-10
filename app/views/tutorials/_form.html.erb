@@ -17,10 +17,10 @@
   <%= t.label :cost %>
   <%= t.select :cost, options_for_select([
     ['Free', 'Free'],
-    ['$: Less than $10/month', '$'],
-    ['$$: Less than $20/month', '$$'],
-    ['$$$: Less than $30/month', '$$$'],
-    ['$$$$: More than $30/month', '$$$$']
+    ['$: ~$100/one-time, ~$10/month', '$'],
+    ['$$: ~$150/one-time, ~$15/month', '$$'],
+    ['$$$: ~$200/one-time, ~$20/month', '$$$'],
+    ['$$$$: More than $300/one-time, $30/month', '$$$$']
     ]), include_blank: 'Select' %>
 
   <%= t.label :all_tags, "Tags" %>
