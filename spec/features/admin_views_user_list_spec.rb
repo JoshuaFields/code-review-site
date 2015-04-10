@@ -6,7 +6,7 @@ feature %(
   So that I can cull the weak from the herd.
 ) do
   let!(:admin) { FactoryGirl.create(:user, admin: true) }
-  let!(:user) { FactoryGirl.create(:user) }
+  let!(:user) { FactoryGirl.create(:user, admin: false) }
 
   scenario "valid admin account" do
     visit new_user_session_path
@@ -15,8 +15,10 @@ feature %(
 
     click_button "Log in"
 
-    click_link "Users List"
+    visit users_path
+
     expect(page).to have_content(user.email)
+    expect(current_path).to eq users_path
   end
 
   scenario "not an admin" do
@@ -31,6 +33,6 @@ feature %(
     visit users_path
 
     expect(page).to have_content("This page requires admin privileges!")
-    expect(page).to_not have_content(admin.email)
+    expect(current_path).to eq tutorials_path
   end
 end
