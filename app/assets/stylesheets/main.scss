@@ -15,7 +15,7 @@ General Styling
 **********************************************************/
 
 html  * {
-    font-family: avenir-roman !important; 
+    font-family: avenir-roman !important;
 }
 
 body {
@@ -107,6 +107,9 @@ Tutorial Index Page Styling
   background-color: $opaque-white;
 }
 
+.tutorial-seach-spacing {
+  padding-top: 2rem;
+}
 
 .tutorial-index-wrapper {
   padding-top: 1rem;
@@ -145,17 +148,12 @@ Tutorial Index Page Styling
   color: $white;
 }
 
-button.tiny.radius.thumbnail-tag {
-  color: $opaque-white;
-}
-
-#pagination-wrapper {
-  margin-left: 12rem;
-  text-align: center;
+.thumbnail-tag {
+  border: 1px solid $opaque-white;
 }
 
 .pagination {
-  background-color: $opaque-white;
+  text-align:center
 }
 
 .pagination span {
@@ -172,6 +170,18 @@ button.tiny.radius.thumbnail-tag {
   text-align: center;
 }
 
+.footer-container {
+  width: 100%;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  background-color: $dark-gray;
+}
+
+.text-edit {
+  text-decoration: none;
+  text-align: center;
+}
 /**********************************************************
 New Tutorial Page Styling
 **********************************************************/
@@ -235,4 +245,19 @@ Edit Tutorial Page Styling
 .review-image {
   height: 50px;
   width: 50px;
+}
+
+/**********************************************************
+User Show Page Styling
+**********************************************************/
+#user-list {
+  color: $orange;
+}
+#user-list-table tr:nth-of-type(even) {
+    background-color: $opaque-white !important;
+}
+
+#user-list-table tr:nth-of-type(odd) td {
+    border-left: 1px solid $opaque-white;
+    border-right: 1px solid $opaque-white;
 }

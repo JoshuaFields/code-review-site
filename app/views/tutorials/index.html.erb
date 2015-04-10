@@ -1,21 +1,24 @@
 <div class="row longer-row">
   <div class="large-2 columns index-search-wrapper">
-    <%= form_tag(tutorials_search_path, method: "get") do %>
-      <%= text_field_tag(:search) %>
-      <%= submit_tag("Search", class: "button tiny") %>
-    <% end %>
-  <h3>Sort By:</h3>
-      <%= link_to "Newest", newest_path(:newest), class: "button small radius" %>
-      <%= link_to "Oldest", oldest_path(:oldest), class: "button small radius" %>
     <h3>Tags</h3>
     <div class="index-tag-overflow">
     <% Tag.all.each do |tag| %>
-      <div class="button tiny radius thumbnail-tag">
+      <div class="button tiny radius">
         <%= link_to(tag.tag_name, tag_path(tag.tag_name)) %>
       </div>
     <% end %>
    </div>
-    <%= link_to "Add a Tutorial", new_tutorial_path, class: "button radius" %>
+    <h3>Search By:</h3>
+      <%= form_tag(tutorials_search_path, method: "get") do %>
+        <%= text_field_tag(:search) %>
+        <%= submit_tag("Search", class: "button tiny") %>
+      <% end %>
+    <h3>Sort By:</h3>
+      <%= link_to "Newest", newest_path(:newest), class: "button small radius" %>
+      <%= link_to "Oldest", oldest_path(:oldest), class: "button small radius" %>
+    <div class="tutorial-seach-spacing">
+      <%= link_to "Add a Tutorial", new_tutorial_path, class: "button radius" %>
+    </div>
   </div>
   <div class="large-9 columns tutorial-index-wrapper">
     <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
@@ -24,9 +27,11 @@
           <%= link_to tutorial do %>
             <div class="tutorial-thumbnail">
               <h2><%= tutorial.title %></h2>
-              <span class="stars-holder index-stars" id='review-stars-<%= tutorial.id %>'><%= "#{tutorial.avg_rating}" %></span>
+              <% unless tutorial.avg_rating == nil %>
+                <span class="stars-holder index-stars" id='review-stars-<%= tutorial.id %>'><%= "#{tutorial.avg_rating}" %></span>
+              <% end %>
               <% tutorial.tags.each do |tag| %>
-                <div class="button tiny radius">
+                <div class="button tiny radius thumbnail-tag">
                   <%= tag.tag_name %>
                 </div>
               <% end %>
@@ -38,3 +43,5 @@
     <%= paginate @tutorials %>
   </div>
 </div>
+
+<%= render "footer" %>
