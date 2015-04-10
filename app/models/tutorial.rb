@@ -31,8 +31,10 @@ class Tutorial < ActiveRecord::Base
     count = 0
 
     self.reviews.each do |review|
-      sum += review.rating
-      count += 1
+      if review.rating != nil
+        sum += review.rating
+        count += 1
+      end
     end
     if count == 0
       return nil
