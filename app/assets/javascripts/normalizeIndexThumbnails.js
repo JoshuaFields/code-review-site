@@ -15,4 +15,7 @@ var indexWrapperClass = ".tutorial-thumbnail-wrapper";
 
 if ($(indexWrapperClass).length) {
   normalizeIndexWrapperHeights(indexWrapperClass);
+  $(window).resize(function(){
+    normalizeIndexWrapperHeights(indexWrapperClass);
+  });
 }
