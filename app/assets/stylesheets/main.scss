@@ -168,7 +168,7 @@ Tutorial Index Page Styling
 .footer-container {
   width: 100%;
   padding: 1rem;
-  position: fixed;
+  margin-top: 2rem;
   bottom: 0;
   background-color: $dark-gray;
 }
@@ -219,16 +219,15 @@ Show Tutorial Page Styling
   margin-bottom: 1rem;
 }
 
-.upvote-img {
+.upvote, .downvote {
   display: block;
+  height: 2rem;
 }
 
 .vote-score {
   display: block;
-}
-
-.downvote-img {
-  display: block;
+  font-weight: bold;
+  margin-left: 0.65rem;
 }
 
 .review-image {
