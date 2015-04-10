@@ -1,10 +1,12 @@
 /* Color Definitions */
 $dark-gray: #2e2e2e;
 $dark-gray-hover: #262626;
-$opaque-white: rgba(255, 255, 255, 0.8);
+$opaque-white: rgba(186, 186, 186, 0.9);
 $white: #fff;
-$orange: rgb(214, 71, 31);
+$orange: #ef4b00;
+$blue: #00a4dd;
 $flash-color: $orange;
+$shale-gray: #3f6376;
 
 $border-radius: 5px;
 
@@ -12,8 +14,12 @@ $border-radius: 5px;
 General Styling
 **********************************************************/
 
+html  * {
+  font-family: avenir-roman;
+}
+
 body {
-  background: url("binary-background.jpg") center;
+  background-color: $shale-gray;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -22,6 +28,8 @@ body {
 
 .button {
   background-color: $dark-gray;
+  text-color: $white;
+  text-decoration: none;
 }
 
 .button:hover {
@@ -35,6 +43,11 @@ body {
 .flash {
   background-color: $flash-color;
   padding: 1em;
+}
+
+.index-tag-overflow a {
+  text-color: $white;
+  text-decoration: none;
 }
 
 /**********************************************************
@@ -84,13 +97,22 @@ Devise Styling
 Tutorial Index Page Styling
 **********************************************************/
 .index-search-wrapper {
-  margin: 5rem 0;
   background-color: $opaque-white;
+  margin-left: 1rem;
+  margin-top: 3rem;
+  padding-top: 1rem;
 }
 
+.tutorial-seach-spacing {
+  padding-top: 2rem;
+}
 
 .tutorial-index-wrapper {
-  margin: 5rem 0;
+  background-color: $opaque-white;
+  margin-right: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
 }
 
 .tutorial-thumbnail-wrapper {
@@ -106,30 +128,30 @@ Tutorial Index Page Styling
 .tutorial-thumbnail {
   width: 100%;
   height: 100%;
-  min-height: 500px;
-  background-color: $opaque-white;
+  background-color: $dark-gray;
   border-radius: $border-radius;
+  text-align: center;
+  word-wrap: break-word;
 }
 
 .tutorial-thumbnail:hover {
-  background-color: $white;
+  background-color: $dark-gray-hover;
 }
 
-.tutorial-thumbnail h3 {
-  color: $orange;
+.tutorial-thumbnail h2 {
+  color: $white;
 }
 
-#pagination-wrapper {
-  margin-left: 12rem;
-  text-align: center;
+.thumbnail-tag {
+  border: 1px solid $opaque-white;
 }
 
 .pagination {
-  background-color: $opaque-white;
+  text-align:center
 }
 
 .pagination span {
-  font-size: 1.7rem;
+  font-size: 1.55rem;
 }
 
 .index-tag-overflow {
@@ -137,18 +159,42 @@ Tutorial Index Page Styling
   overflow: auto;
 }
 
+.index-stars {
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.footer-container {
+  width: 100%;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  background-color: $dark-gray;
+}
+
+.text-edit {
+  text-decoration: none;
+  text-align: center;
+}
 /**********************************************************
 New Tutorial Page Styling
 **********************************************************/
 .new-tutorial-wrapper {
-  margin-top: 14rem;
+  padding-top: 1rem;
+  margin-top: 3rem;
+  margin-right: 3rem;
+  margin-bottom: 2rem;
   background-color: $opaque-white;
   border: 1px solid $dark-gray;
 }
 
 #tutorial-back-button {
-  margin-top: 2rem;
-  margin-left: 2rem;
+  margin-bottom: 1rem;
+  float: right;
+}
+
+.new-tutorial-wrapper h1 {
+  display: inline-block;
 }
 
 /**********************************************************
@@ -158,6 +204,7 @@ Show Tutorial Page Styling
   margin-top: 5rem;
   background-color: $opaque-white;
   border: 1px solid $dark-gray;
+  padding-bottom: 1.5rem;
 }
 
 .review-wrapper {
@@ -181,6 +228,7 @@ Show Tutorial Page Styling
   height: 50px;
   width: 50px;
 }
+
 /**********************************************************
 Edit Tutorial Page Styling
 **********************************************************/
@@ -191,4 +239,19 @@ Edit Tutorial Page Styling
 .review-image {
   height: 50px;
   width: 50px;
+}
+
+/**********************************************************
+User Show Page Styling
+**********************************************************/
+#user-list {
+  color: $orange;
+}
+#user-list-table tr:nth-of-type(even) {
+    background-color: $opaque-white !important;
+}
+
+#user-list-table tr:nth-of-type(odd) td {
+    border-left: 1px solid $opaque-white;
+    border-right: 1px solid $opaque-white;
 }

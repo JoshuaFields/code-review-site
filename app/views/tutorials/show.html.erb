@@ -1,53 +1,33 @@
 <div class="row">
   <div class="small-12 column show-tutorial-wrapper">
-    <%= link_to "Back", tutorials_path, class: "button radius", id:"tutorial-back-button" %>
-    <p>
-      <strong>Title:</strong>
-      <%= @tutorial.title %>
-    </p>
-
-    <p>
-      <strong>URL:</strong>
-      <%= @tutorial.url %>
-    </p>
-
-    <p>
-      <strong>Language:</strong>
-      <%= @tutorial.language %>
-    </p>
-
+      <h5><b>Title:</b> <%= @tutorial.title %></h5>
+      <%= link_to "Back", tutorials_path, class: "button radius", id:"tutorial-back-button" %>
+      <h5><b>URL:</b> <%= @tutorial.url %></h5>
+      <h5><b>Language:</b> <%= @tutorial.language %></h5>
     <% unless @tutorial.organization.empty? %>
-      <p>
-        <strong>Organization:</strong>
-        <%= @tutorial.organization %>
-      </p>
+        <h5><b>Organization:</b> <%= @tutorial.organization %></h5>
     <% end %>
-
     <% unless @tutorial.cost.empty? %>
-      <p>
-        <strong>Cost:</strong>
-        <%= @tutorial.cost %>
-      </p>
+        <h5><b>Cost:</b> <%= @tutorial.cost %></h5>
 	  <% end %>
-
+    <% unless @tutorial.avg_rating == nil %>
+    <h5><b>Average Rating:</b> <span class="stars-holder" id='review-stars-<%= @tutorial.id %>'><%= "#{@tutorial.avg_rating}" %></span></h5>
+    <% end %>
     <% unless @tutorial.tags.empty? %>
-      <p>
-        <strong>Tags:</strong>
+        <h5><b>Tags:</b>
         <% @tutorial.tags.each do |tag| %>
           <div class="button tiny radius">
             <%= link_to(tag.tag_name, tag_path(tag.tag_name)) %>
           </div>
         <% end %>
-      </p>
+      </h5>
     <% end %>
-
     <% unless @tutorial.description.empty? %>
-      <p>
-        <strong>Description:</strong>
-        <%= @tutorial.description %>
-      </p>
+        <h5><b>Description:</b> <%= @tutorial.description %></h5>
     <% end %>
   </div>
+</div>
+<div class="row">
   <% if User.owner?(current_user, @tutorial) %>
     <%= link_to 'Edit Tutorial', edit_tutorial_path(@tutorial), class: "button tiny" %>
   <% end %>
@@ -57,37 +37,11 @@
   <% end %>
 </div>
 
-<div class="row">
-  <div class="small-12 column show-tutorial-wrapper">
-    <% @tutorial.reviews.each do |review| %>
-      <% if review.id %>
-        <div class="small-1 column">
-          <%= link_to "upvote", '#', class: "upvote-img", reviewID: "#{review.id}", path: "#{upvote_path(review)}" %>
-          <h6 class="vote-score" id="review-<%= review.id %>"><%= score(review.id) %></h6>
-          <%= link_to "downvote", '#', class: "downvote-img", reviewID: "#{review.id}", path: "#{downvote_path(review)}" %>
-        </div>
-        <div class="row review-wrapper">
-          <div class="small-11 column">
-            <span class="stars-holder" id='review-stars-<%= review.id %>'><%= "#{review.rating}" %></span>
-            <div class="small-12 column">
-              <div class="review-image">
-                <%= image_tag(review.user.profile_photo.url) %> <br>
-              </div>
-              <p><%= review.user.email %>'s review of <%= @tutorial.title %></p>
-              <p><%= review.body %></p>
-            </div>
-            <% if current_user.try(:admin?) %>
-              <div class="delete-review-container small-12 column">
-                <%= link_to "Delete Review", tutorial_review_path(@tutorial, review),
-                  method: :delete, class: "button tiny" %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+<% unless @tutorial.reviews.empty? %>
+  <%= render "tutorials/reviews" %>
+<% end %>
 
+<div class="row">
   <div class="small-12 column show-tutorial-wrapper">
     <%= form_for([@tutorial, @tutorial.reviews.build]) do |f| %>
         <%= f.label :rating %>
