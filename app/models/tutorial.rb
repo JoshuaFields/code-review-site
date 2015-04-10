@@ -25,4 +25,13 @@ class Tutorial < ActiveRecord::Base
   def self.tagged_with(tag_name)
     Tag.find_by_tag_name!(tag_name).tutorials
   end
+
+  def avg_rating
+    if reviews.size > 0
+      reviews.average(:rating)
+    else
+      nil
+    end
+  end
+
 end
