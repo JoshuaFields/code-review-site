@@ -22,7 +22,7 @@ feature %(
 
     visit tutorials_path
     click_link "Newest"
-    Tutorial.order('created_at desc').all.should == [tutorial2, tutorial1]
+    expect(Tutorial.order('created_at desc').all).to eq [tutorial2, tutorial1]
   end
 
   scenario "user sorts index page by clicking on oldest" do
@@ -31,6 +31,6 @@ feature %(
 
     visit tutorials_path
     click_link "Oldest"
-    Tutorial.order('created_at asc').all.should == [tutorial1, tutorial2]
+    expect(Tutorial.order('created_at asc').all).to eq [tutorial1, tutorial2]
   end
 end
