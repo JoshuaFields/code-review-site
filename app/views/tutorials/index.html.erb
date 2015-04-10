@@ -26,7 +26,7 @@
         <li class="tutorial-thumbnail-wrapper">
           <%= link_to tutorial do %>
             <div class="tutorial-thumbnail">
-              <h2><%= tutorial.title %></h2>
+              <h2><%= tutorial.title.titleize %></h2>
               <% unless tutorial.avg_rating == nil %>
                 <span class="stars-holder index-stars" id='review-stars-<%= tutorial.id %>'><%= "#{tutorial.avg_rating}" %></span>
               <% end %>

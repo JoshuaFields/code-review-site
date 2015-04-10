@@ -1,4 +1,5 @@
-[![BuildStatus](https://travis-ci.org/JoshuaFields/code-review-site.svg?branch=master)](https://travis-ci.org/JoshuaFields/code-review-site) [![CodeClimate](https://codeclimate.com/github/JoshuaFields/code-review-site.png)](https://codeclimate.com/github/JoshuaFields/code-review-site)
+[![BuildStatus](https://travis-ci.org/JoshuaFields/code-review-site.svg?branch=master)](https://travis-ci.org/JoshuaFields/code-review-site)
+[![CodeClimate](https://codeclimate.com/github/JoshuaFields/code-review-site.png)](https://codeclimate.com/github/JoshuaFields/code-review-site)
 [![Coverage Status](https://coveralls.io/repos/JoshuaFields/code-review-site/badge.svg?branch=master)](https://coveralls.io/r/JoshuaFields/code-review-site?branch=master)
 
 # Welcome to our code review website!

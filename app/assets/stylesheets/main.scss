@@ -139,6 +139,7 @@ Tutorial Index Page Styling
 }
 
 .tutorial-thumbnail h2 {
+  padding-top: .25rem;
   color: $white;
 }
 
@@ -201,10 +202,16 @@ New Tutorial Page Styling
 Show Tutorial Page Styling
 **********************************************************/
 .show-tutorial-wrapper {
-  margin-top: 5rem;
+  margin-top: 2rem;
   background-color: $opaque-white;
   border: 1px solid $dark-gray;
-  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.show-review-wrapper {
+  background-color: $opaque-white;
+  border: 1px solid $dark-gray;
+  margin-bottom: 1.5rem;
 }
 
 .review-wrapper {
@@ -227,6 +234,16 @@ Show Tutorial Page Styling
 .review-image {
   height: 50px;
   width: 50px;
+}
+
+#reviews-header {
+  color: $orange;
+}
+
+#tutorial-title {
+  color: $orange;
+  margin-top: 1rem;
+  margin-bottom: -1.75rem;
 }
 
 /**********************************************************

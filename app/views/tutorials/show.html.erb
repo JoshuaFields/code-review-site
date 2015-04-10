@@ -1,6 +1,7 @@
 <div class="row">
+
+  <h2 id="tutorial-title"><%= @tutorial.title.titleize %></h2>
   <div class="small-12 column show-tutorial-wrapper">
-      <h5><b>Title:</b> <%= @tutorial.title %></h5>
       <%= link_to "Back", tutorials_path, class: "button radius", id:"tutorial-back-button" %>
       <h5><b>URL:</b> <%= @tutorial.url %></h5>
       <h5><b>Language:</b> <%= @tutorial.language %></h5>

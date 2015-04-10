@@ -7,7 +7,7 @@ feature %(
 ) do
   before(:each) do
     FactoryGirl.create(:tutorial, title: "Great title!")
-    FactoryGirl.create(:tutorial, title: "Overall TITLE awesomeness!")
+    FactoryGirl.create(:tutorial, title: "Overall TITLE Awesomeness!")
     FactoryGirl.create(:tutorial, title: "Improved titleness!")
   end
 
@@ -15,27 +15,27 @@ feature %(
     visit tutorials_path
     fill_in :search, with: "title"
     click_button "Search"
-    expect(page).to have_content("Great title!")
-    expect(page).to have_content("Overall TITLE awesomeness!")
-    expect(page).to have_content("Improved titleness!")
+    expect(page).to have_content("Great Title!")
+    expect(page).to have_content("Overall Title Awesomeness!")
+    expect(page).to have_content("Improved Titleness!")
   end
 
   scenario "Search term is a near-match" do
     visit tutorials_path
     fill_in :search, with: "titling"
     click_button "Search"
-    expect(page).to have_content("Great title!")
-    expect(page).to have_content("Overall TITLE awesomeness!")
-    expect(page).to have_content("Improved titleness!")
+    expect(page).to have_content("Great Title!")
+    expect(page).to have_content("Overall Title Awesomeness!")
+    expect(page).to have_content("Improved Titleness!")
   end
 
   scenario "Search term is not a match" do
     visit tutorials_path
     fill_in :search, with: "adfjksdfks"
     click_button "Search"
-    expect(page).to have_no_content("Great title!")
-    expect(page).to have_no_content("Overall TITLE awesomeness!")
-    expect(page).to have_no_content("Improved titleness!")
+    expect(page).to have_no_content("Great Title!")
+    expect(page).to have_no_content("Overall Title Awesomeness!")
+    expect(page).to have_no_content("Improved Titleness!")
   end
 
   scenario "Destructive SQL query" do
@@ -43,8 +43,8 @@ feature %(
     fill_in :search, with: "a');DROP TABLE tutorials;--"
     click_button "Search"
     visit tutorials_path
-    expect(page).to have_content("Great title!")
-    expect(page).to have_content("Overall TITLE awesomeness!")
-    expect(page).to have_content("Improved titleness!")
+    expect(page).to have_content("Great Title!")
+    expect(page).to have_content("Overall Title Awesomeness!")
+    expect(page).to have_content("Improved Titleness!")
   end
 end
