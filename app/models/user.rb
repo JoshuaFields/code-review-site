@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   # Should NOT destroy dependent reviews/tutorials when deleted.
+  validates :user_name, uniqueness: true, presence: true
   has_many :reviews
   has_many :tutorials
 
