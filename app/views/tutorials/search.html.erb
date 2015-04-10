@@ -3,7 +3,7 @@
 <% else %>
   <% @results.each do |result| %>
     <%= link_to tutorial_path(result["id"]) do %>
-      <h2><%= result["title"] %></h2>
+      <h2><%= result["title"].titleize %></h2>
     <% end %>
   <% end %>
 <% end %>
