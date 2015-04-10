@@ -1,10 +1,12 @@
 /* Color Definitions */
 $dark-gray: #2e2e2e;
 $dark-gray-hover: #262626;
-$opaque-white: rgba(255, 255, 255, 0.8);
+$opaque-white: rgba(186, 186, 186, 0.9);
 $white: #fff;
-$orange: rgb(214, 71, 31);
+$orange: #ef4b00;
+$blue: #00a4dd;
 $flash-color: $orange;
+$shale-gray: #3f6376;
 
 $border-radius: 5px;
 
@@ -12,8 +14,13 @@ $border-radius: 5px;
 General Styling
 **********************************************************/
 
+html  * { 
+    font-family: Courier !important; 
+}
+
 body {
-  background: url("binary-background.jpg") center;
+  /*background: url("binary-background.jpg") center;*/
+  background-color: $shale-gray;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -96,12 +103,17 @@ Tutorial Index Page Styling
 .index-search-wrapper {
   padding-top: 1rem;
   margin-top: 5rem;
+  margin-left: 1rem;
   background-color: $opaque-white;
 }
 
 
 .tutorial-index-wrapper {
-  margin: 5rem 0;
+  padding-top: 1rem;
+  margin-top: 5rem;
+  margin-right: 3rem;
+  margin-bottom: 2rem;
+  background-color: $opaque-white;
 }
 
 .tutorial-thumbnail-wrapper {
@@ -119,17 +131,22 @@ Tutorial Index Page Styling
   height: 100%;
   //min-height: 500px;
   /* background-color: $opaque-white; */
-  background-color: rgba(50, 50, 50, 0.9);
+  background-color: $dark-gray;
   border-radius: $border-radius;
   text-align: center;
+  word-wrap: break-word;
 }
 
 .tutorial-thumbnail:hover {
-  background-color: rgba(50, 50, 50, .95);
+  background-color: $dark-gray-hover;
 }
 
-.tutorial-thumbnail h1 {
-  color: $orange;
+.tutorial-thumbnail h2 {
+  color: $white;
+}
+
+button.tiny.radius.thumbnail-tag {
+  color: $opaque-white;
 }
 
 #pagination-wrapper {
