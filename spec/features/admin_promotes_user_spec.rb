@@ -11,7 +11,6 @@ feature %(
 
   scenario "promotes user to admin" do
     visit new_user_session_path
-    fill_in "User name", with: admin.user_name
     fill_in "Email", with: admin.email
     fill_in "Password", with: admin.password
 
@@ -24,7 +23,6 @@ feature %(
     click_link "Sign Out"
 
     visit new_user_session_path
-    fill_in "User name", with: user.user_name
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
 
@@ -37,7 +35,6 @@ feature %(
 
   scenario "demotes admin to user" do
     visit new_user_session_path
-    fill_in "User name", with: admin.user_name
     fill_in "Email", with: admin.email
     fill_in "Password", with: admin.password
 
@@ -50,7 +47,6 @@ feature %(
     click_link "Sign Out"
 
     visit new_user_session_path
-    fill_in "User name", with: admin_two.user_name
     fill_in "Email", with: admin_two.email
     fill_in "Password", with: admin_two.password
 

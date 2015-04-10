@@ -15,7 +15,7 @@
               <div class="review-image">
                 <%= image_tag(review.user.profile_photo.url) %> <br>
               </div>
-              <p><%= review.user.user_name %>'s review of <%= @tutorial.title %></p>
+              <p><%= review.user.email %>'s review of <%= @tutorial.title %></p>
               <p><%= review.body %></p>
             </div>
             <% if current_user.try(:admin?) %>
