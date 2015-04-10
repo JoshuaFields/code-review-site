@@ -33,5 +33,4 @@ class Tutorial < ActiveRecord::Base
       nil
     end
   end
-
 end
