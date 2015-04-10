@@ -15,7 +15,7 @@ General Styling
 **********************************************************/
 
 html  * {
-  font-family: avenir-roman !important;
+  font-family: avenir-roman;
 }
 
 body {
@@ -28,6 +28,8 @@ body {
 
 .button {
   background-color: $dark-gray;
+  text-color: $white;
+  text-decoration: none;
 }
 
 .button:hover {
@@ -43,14 +45,9 @@ body {
   padding: 1em;
 }
 
-.button {
-  text-decoration: none;
-  text-color: $white;
-}
-
 .index-tag-overflow a {
-  text-decoration: none;
   text-color: $white;
+  text-decoration: none;
 }
 
 /**********************************************************
@@ -100,19 +97,19 @@ Devise Styling
 Tutorial Index Page Styling
 **********************************************************/
 .index-search-wrapper {
-  padding-top: 1rem;
-  margin-top: 3rem;
-  margin-left: 1rem;
   background-color: $opaque-white;
+  margin-left: 1rem;
+  margin-top: 3rem;
+  padding-top: 1rem;
 }
 
 
 .tutorial-index-wrapper {
-  padding-top: 1rem;
-  margin-top: 3rem;
-  margin-right: 3rem;
-  margin-bottom: 2rem;
   background-color: $opaque-white;
+  margin-right: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
 }
 
 .tutorial-thumbnail-wrapper {
@@ -222,13 +219,6 @@ Show Tutorial Page Styling
   width: 50px;
 }
 
-.show-tutorial-wrapper h5 {
-
-}
-
-.show-tutorial-wrapper h5 s {
-  font-weight: bold
-}
 /**********************************************************
 Edit Tutorial Page Styling
 **********************************************************/
