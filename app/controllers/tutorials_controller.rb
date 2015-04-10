@@ -10,7 +10,7 @@ class TutorialsController < ApplicationController
     elsif params[:oldest]
       @tutorials = Tutorial.all.order('created_at asc').page(params[:page]).per(9)
     else
-      @tutorials = Tutorial.all.page(params[:page]).per(9)
+      @tutorials = Tutorial.all.order('created_at desc').page(params[:page]).per(9)
     end
   end
 
