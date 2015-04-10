@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(version: 20150410180745) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",                  default: false
     t.string   "profile_photo"
+    t.boolean  "admin",                  default: false
     t.string   "user_name",                              null: false
   end
 
