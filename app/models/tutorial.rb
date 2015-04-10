@@ -27,17 +27,10 @@ class Tutorial < ActiveRecord::Base
   end
 
   def avg_rating
-    sum = 0
-    count = 0
-
-    self.reviews.each do |review|
-      sum += review.rating
-      count += 1
-    end
-    if count == 0
-      return nil
+    if reviews.size > 0
+      reviews.average(:rating)
     else
-      sum.to_f / count
+      nil
     end
   end
 

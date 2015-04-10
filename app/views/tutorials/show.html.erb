@@ -1,7 +1,7 @@
 <div class="row">
-  <%= link_to "Back", tutorials_path, class: "button radius", id:"tutorial-back-button" %>
   <div class="small-12 column show-tutorial-wrapper">
       <h5><b>Title:</b> <%= @tutorial.title %></h5>
+      <%= link_to "Back", tutorials_path, class: "button radius", id:"tutorial-back-button" %>
       <h5><b>URL:</b> <%= @tutorial.url %></h5>
       <h5><b>Language:</b> <%= @tutorial.language %></h5>
     <% unless @tutorial.organization.empty? %>
@@ -37,37 +37,11 @@
   <% end %>
 </div>
 
-<div class="row">
-  <div class="small-12 column show-tutorial-wrapper">
-    <% @tutorial.reviews.each do |review| %>
-      <% if review.id %>
-        <div class="small-1 column">
-          <%= link_to "upvote", '#', class: "upvote-img", reviewID: "#{review.id}", path: "#{upvote_path(review)}" %>
-          <h6 class="vote-score" id="review-<%= review.id %>"><%= score(review.id) %></h6>
-          <%= link_to "downvote", '#', class: "downvote-img", reviewID: "#{review.id}", path: "#{downvote_path(review)}" %>
-        </div>
-        <div class="row review-wrapper">
-          <div class="small-11 column">
-            <span class="stars-holder" id='review-stars-<%= review.id %>'><%= "#{review.rating}" %></span>
-            <div class="small-12 column">
-              <div class="review-image">
-                <%= image_tag(review.user.profile_photo.url) %> <br>
-              </div>
-              <p><%= review.user.email %>'s review of <%= @tutorial.title %></p>
-              <p><%= review.body %></p>
-            </div>
-            <% if current_user.try(:admin?) %>
-              <div class="delete-review-container small-12 column">
-                <%= link_to "Delete Review", tutorial_review_path(@tutorial, review),
-                  method: :delete, class: "button tiny" %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+<% unless @tutorial.reviews.empty? %>
+  <%= render "tutorials/reviews" %>
+<% end %>
 
+<div class="row">
   <div class="small-12 column show-tutorial-wrapper">
     <%= form_for([@tutorial, @tutorial.reviews.build]) do |f| %>
         <%= f.label :rating %>
