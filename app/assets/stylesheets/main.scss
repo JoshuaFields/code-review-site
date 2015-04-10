@@ -15,7 +15,7 @@ General Styling
 **********************************************************/
 
 html  * {
-    font-family: avenir-roman !important; 
+  font-family: avenir-roman !important;
 }
 
 body {
@@ -176,14 +176,21 @@ button.tiny.radius.thumbnail-tag {
 New Tutorial Page Styling
 **********************************************************/
 .new-tutorial-wrapper {
-  margin-top: 14rem;
+  padding-top: 1rem;
+  margin-top: 3rem;
+  margin-right: 3rem;
+  margin-bottom: 2rem;
   background-color: $opaque-white;
   border: 1px solid $dark-gray;
 }
 
 #tutorial-back-button {
-  margin-top: 2rem;
-  margin-left: 2rem;
+  margin-bottom: 1rem;
+  float: right;
+}
+
+.new-tutorial-wrapper h1 {
+  display: inline-block;
 }
 
 /**********************************************************
