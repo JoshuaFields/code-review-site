@@ -5,20 +5,17 @@
 
 This is a website that will enable users to upload reviews for online coding and software-related language tutorials.
 
-* Ruby version
-
-* System dependencies
+* Dependencies
+  - Check Gemfile.lock!
 
 * Configuration
+  - It's configured!
 
 * Database creation
-
-* Database initialization
+  - Difficult! We use both PostgreSQL and Redis. Postgres takes care of most everything, while Redis is used for the upvote/downvote system.
 
 * How to run the test suite
+  - type `rake spec` and cross your fingers.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Services
+  - AWS, Redis Cloud, Heroku
