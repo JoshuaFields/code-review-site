@@ -13,9 +13,13 @@ class Tutorial < ActiveRecord::Base
   has_many :tags, through: :tutorials_tags, dependent: :destroy
 
   def all_tags=(names)
-    self.tags = names.downcase.split(",").map do |name|
-      Tag.where(tag_name: name.strip).first_or_create!
+    names.downcase.split(",").compact.each do |name|
+      name.strip!
+      unless name.empty?
+        tags << Tag.where(tag_name: name).first_or_create!
+      end
     end
+    tags
   end
 
   def all_tags
