@@ -4,9 +4,11 @@
     <% @tutorial.reviews.each do |review| %>
       <% if review.id %>
         <div class="small-1 column">
-          <%= link_to (image_tag("chevron-up.png", class: "upvote")), '#', class: "upvote-img", reviewID: "#{review.id}", path: "#{upvote_path(review)}" %>
+          <%= link_to (image_tag("chevron-up.png")), '#', class: "upvote", reviewID: "#{review.id}",
+            path: "#{upvote_path(review)}" %>
           <h6 class="vote-score" id="review-<%= review.id %>"><%= score(review.id) %></h6>
-          <%= link_to (image_tag("chevron-down.png", class: "downvote")), '#', class: "downvote-img", reviewID: "#{review.id}", path: "#{downvote_path(review)}" %>
+          <%= link_to (image_tag("chevron-down.png")), '#', class: "downvote", reviewID: "#{review.id}",
+            path: "#{downvote_path(review)}" %>
         </div>
         <div class="row review-wrapper">
           <div class="small-11 column">

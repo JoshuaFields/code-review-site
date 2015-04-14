@@ -11,16 +11,16 @@ describe "Voting module and ScoreHelper" do
 
   context "Test voting functionality" do
     it "successfully upvotes and removes upvote" do
-      expect(send_upvote("P", "P")).to eq "OK"
+      expect(send_vote("P", "P", "up", "down")).to eq "OK"
       expect(score("P")).to eq "1"
-      expect(send_upvote("P", "P")).to eq "OK"
+      expect(send_vote("P", "P", "up", "down")).to eq "OK"
       expect(score("P")).to eq "0"
     end
 
     it "successfully downvotes and removes downvote" do
-      expect(send_downvote("P", "P")).to eq "OK"
+      expect(send_vote("P", "P", "down", "up")).to eq "OK"
       expect(score("P")).to eq "-1"
-      expect(send_downvote("P", "P")).to eq "OK"
+      expect(send_vote("P", "P", "down", "up")).to eq "OK"
       expect(score("P")).to eq "0"
     end
   end
