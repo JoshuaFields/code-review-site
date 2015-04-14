@@ -28,17 +28,13 @@ class ReviewsController < ApplicationController
     redirect_to tutorial_path(@tutorial)
   end
 
-  def upvote
-    send_upvote(params[:id], current_user.id)
-    respond_to do |format|
-      format.json { render json: score(params[:id]) }
-    end
-  end
-
-  def downvote
-    send_downvote(params[:id], current_user.id)
-    respond_to do |format|
-      format.json { render json: score(params[:id]) }
+  %w(up down).each do |direction|
+    define_method "#{direction}vote" do
+      send_vote(
+        params[:id], current_user.id, "#{direction}",
+        "#{direction == "up" ? "down" : "up"}"
+      )
+      respond_to { |format| format.json { render json: score(params[:id]) } }
     end
   end
 
