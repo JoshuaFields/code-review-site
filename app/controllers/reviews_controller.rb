@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
     define_method "#{direction}vote" do
       send_vote(
         params[:id], current_user.id, "#{direction}",
-        "#{direction == "up" ? "down" : "up"}"
+        "#{direction == 'up' ? 'down' : 'up'}"
       )
       respond_to { |format| format.json { render json: score(params[:id]) } }
     end
