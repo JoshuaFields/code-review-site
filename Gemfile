@@ -32,8 +32,3 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'dotenv-rails'
 end
-
-group :test do
-  gem 'poltergeist'
-  gem 'database_cleaner'
-end
