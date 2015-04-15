@@ -38,8 +38,8 @@ class ReviewsController < ApplicationController
 
   private
 
-  def vote(vote, opposite)
-    send_vote(params[:id], current_user.id, vote, opposite)
+  def vote(direction, opposite)
+    send_vote(params[:id], current_user.id, direction, opposite)
     respond_to { |format| format.json { render json: score(params[:id]) } }
   end
 
