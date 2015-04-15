@@ -10,10 +10,8 @@ Rails.application.routes.draw do
   post "reviews/:id/upvote", to: "reviews#upvote", as: "upvote"
   post "reviews/:id/downvote", to: "reviews#downvote", as: "downvote"
 
-
   resources :users, only: %i(index destroy)
   resources :tutorials, only: %i(index show new create edit update destroy) do
     resources :reviews, only: %i(index create destroy)
   end
-
 end

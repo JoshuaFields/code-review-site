@@ -29,16 +29,19 @@ class ReviewsController < ApplicationController
   end
 
   def upvote
-    send_vote(params[:id], current_user.id, "up", "down")
-    respond_to { |format| format.json { render json: score(params[:id]) } }
+    vote("up", "down")
   end
 
   def downvote
-    send_vote(params[:id], current_user.id, "down", "up")
-    respond_to { |format| format.json { render json: score(params[:id]) } }
+    vote("down", "up")
   end
 
   private
+
+  def vote(direction, opposite)
+    send_vote(params[:id], current_user.id, direction, opposite)
+    respond_to { |format| format.json { render json: score(params[:id]) } }
+  end
 
   def review_params
     params.require(:review).permit(:rating, :body)
